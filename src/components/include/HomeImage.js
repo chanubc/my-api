@@ -55,36 +55,19 @@ const HomeImage = () => {
                             src={ImgEx} alt="Sunset in the mountains"></img>
                     </div>
                     {/* <!-- Four columns --> */}
-                    <ul class="flex h-fit">
-                        {data.length !== 0 ?
-                            (
-                                <ul>
-                                    {data.map((user) => (
-
-                                        <item class="w-1/4 bg-gray-500 mr-3 rounded-[5px]">
-                                            <img id="im1" class="image-item" src={user.avatar}
-                                                alt="Sunset in the mountains" />
-                                        </item>
-                                    ))}
-                                </ul>
-
-                            ) : (
-                                <h1>로딩중...</h1>
-                            )
-                        }
-
-
-                        <li class="w-1/4 bg-gray-400  mr-3 rounded-[5px]">
-                            <img class="image-item" src={ImgEx}
-                                alt="Sunset in the mountains"></img>
-                        </li>
-                        <li class="w-1/4 bg-gray-500  mr-3 rounded-[5px]">
-                            <img class="image-item" src="/img/식품 검색.png" alt="Sunset in the mountains"></img>
-                        </li>
-                        <li class="w-1/4 bg-gray-400 rounded-[5px]">
-                            <img class="image-item" src="/img/farm1.jpg" alt="Sunset in the mountains"></img>
-                        </li>
+                    <ul className="flex h-fit">
+                        {data.length !== 0 ? (
+                            data.slice(0, 4).map((user, index) => (
+                                <li key={index} className={`w-1/4 bg-gray-500 ${index !== 3 ? 'mr-3' : ''} rounded-[5px]`}>
+                                    <img className="image-item" src={user.avatar} alt="User Avatar" />
+                                </li>
+                            ))
+                        ) : (
+                            <h1>로딩중...</h1>
+                        )}
                     </ul>
+
+
                 </div>
             </div>
             {/* <!-- 방명록 --> */}
