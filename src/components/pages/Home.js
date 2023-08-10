@@ -4,6 +4,7 @@ import { DatePicker } from "antd";
 import Navbar from "../include/Navbar";
 import '../css/home.css';
 import HomeImage from '../include/HomeImage';
+import HomeGuest from '../include/HomeGuest';
 import Left from '../include/Left';
 import RightTop from '../include/RightTop';
 import RightBottom from '../include/RightBottom';
@@ -57,6 +58,7 @@ const Home = () => {
             {/* 가운데 */}
             <section id="center_card" class="center_card  h-screen">
               <HomeImage />
+              <HomeGuest />
             </section>
 
             {/* 우측 */}
