@@ -1,13 +1,104 @@
-body {
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
+} */
 
-code {
+/* code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+} */
+
+@font-face {
+  font-family: "Pretendard-Regular";
+
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
+    format("woff");
+
+  font-weight: 400;
+
+  font-style: normal;
+}
+
+:root {
+  --my-green: #00b890;
+  --navbar-height: 68px; /* navbar의 높이 설정 */
+}
+
+.guestEx {
+  color: var(--my-green);
+  font-size: 20px;
+}
+
+html,
+body {
+  overflow-y: auto;
+  height: 100vh;
+  margin: 0 auto;
+  font-family: "Pretendard-Regular";
+  background: linear-gradient(#DBE0DE, #D3DEDA);
+}
+
+.content {
+  /* overflow-y: hidden; */
+  /* height: 100%; */
+  
+  position: relative;
+  padding: 31px 0;
+  /* height: calc(100vh - var(--navbar-height)); */
+  height: 100%;
+  /* background: linear-gradient(#f6f6f6, #d3deda); */
+  height: fit-content;
+}
+
+.wrapper {
+  /* height: calc(100vh - var(--navbar-height)); */
+  /* margin: 0 auto; */
+  height: 100%;
+  width: 80%;
+}
+
+/* .wrapping{
+  margin-bottom: 31px;
+  height: fit-content;
+} */
+
+.center_card {
+  width: 52%;
+}
+
+
+@media screen and (max-width: 768px) {
+  .center_card,
+  .content {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  #left_card,
+  #right_card {
+    display: none;
+  }
+}
+
+.color-custom{
+  color: black;
+}
+
+.hot_product{
+  min-height: 500px;
+}
+
+
+
+/* 우측 */
+.neighbor ~ .hot_product {
+  margin-top: 29px;
 }
