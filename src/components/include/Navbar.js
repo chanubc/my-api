@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
-import Guest from '../Guest';
 import Logo from '../img/Logo_farmerin.svg'; // 이미지 경로 설정
 
 

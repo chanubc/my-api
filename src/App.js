@@ -1,8 +1,8 @@
 import React from 'react';
 import {BrowserRouter as Router, Route, Link, Routes} from 'react-router-dom';
-import Home from './components/Home';
-import Guest from './components/Guest';
-import Sales from './components/Sales';
+import Home from './components/pages/Home';
+import Guest from './components/pages/Guest';
+import Sales from './components/pages/Sales';
 
 // 필요한 라우터를 추가하세요
 const App = () => {

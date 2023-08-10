@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-import Navbar from "./include/Navbar";
+import Navbar from "../include/Navbar";
 
 // 필요한 코드를 추가하세요
 const Sales = () => {

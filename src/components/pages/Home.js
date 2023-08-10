@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { MyDiv } from "./HomeStyle";
+import { MyDiv } from "../HomeStyle";
 import { Link } from "react-router-dom";
 import { DatePicker } from "antd";
-import  Navbar  from "./include/Navbar";
+import  Navbar  from "../include/Navbar";
 
 // 필요한 코드를 추가하세요
 const Home = () => {
