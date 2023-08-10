@@ -2,7 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { MyDiv } from "../HomeStyle";
 import { Link } from "react-router-dom";
 import { DatePicker } from "antd";
-import  Navbar  from "../include/Navbar";
+import Navbar from "../include/Navbar";
+import '../css/home.css';
+import HomeImage from '../include/HomeImage';
+import Left from '../include/Left';
 
 // 필요한 코드를 추가하세요
 const Home = () => {
@@ -39,12 +42,24 @@ const Home = () => {
 
   return (
     <>
-      <Navbar/>
-        <ul>
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/example">Example</Link></li>
-        </ul>
-    
+      <Navbar />
+      <div class="wrapping">
+        <main id="content" class="content">
+          {/* <!-- // content --> */}
+          {/* <!-- Wide center column --> */}
+          <main class="wrapper flex mx-auto">
+            <Left />
+            <HomeImage />
+          </main>
+        </main>
+
+
+      </div >
+      <ul>
+        <li><Link to="/">Home</Link></li>
+        <li><Link to="/example">Example</Link></li>
+      </ul>
+
 
       <DatePicker />
 
@@ -75,6 +90,8 @@ const Home = () => {
           </>
         )
       }
+
+
     </>
   );
 };
