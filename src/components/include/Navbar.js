@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
+import Guest from '../Guest';
 import Logo from '../img/Logo_farmerin.svg'; // 이미지 경로 설정
 
 
@@ -65,14 +66,14 @@ const Navbar = () => {
 
                         </li>
                         <li>
-                            <a href="/pages/sale.html" id="sale"
+                            <Link to='/sales' id="sale"
                                 class="block py-2 pl-3 pr-4 rounded hover:bg-transparent md:hover:bg-transparent md:hover:text-[#29A99A] md:p-0">판매중인
-                                상품</a>
+                                상품</Link>
                         </li>
                         <li>
-                            <a href="/pages/guest.html" id="guest"
+                            <Link to='/guest' id="guest"
                                 class="block py-2 pl-3 pr-4 rounded hover:bg-transparent md:hover:bg-transparent md:hover:text-[#29A99A] md:p-0">
-                                방명록</a>
+                                방명록</Link>
                         </li>
 
                     </ul>

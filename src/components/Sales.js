@@ -1,10 +1,12 @@
 import React from 'react';
 import {Link} from "react-router-dom";
+import Navbar from "./include/Navbar";
 
 // 필요한 코드를 추가하세요
-const Example = () => {
+const Sales = () => {
   return (
     <>
+    <Navbar/>
       <nav>
         <ul>
           <li><Link to="/">Home</Link></li>
@@ -20,4 +22,4 @@ const Example = () => {
   );
 };
 
-export default Example;
+export default Sales;
