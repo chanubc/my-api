@@ -44,7 +44,7 @@ const Home = () => {
 
   return (
     <>
-      <Navbar />
+      <Navbar/>
 
       <div class="wrapping">
         {/* navbar제외 영역 */}
@@ -59,6 +59,7 @@ const Home = () => {
             <section id="center_card" class="center_card  h-screen">
               <HomeImage />
               <HomeGuest />
+
             </section>
 
             {/* 우측 */}
