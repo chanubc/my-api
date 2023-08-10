@@ -5,7 +5,7 @@ import Logo from '../img/Logo_farmerin.svg'; // 이미지 경로 설정
 
 const Navbar = () => {
     return (
-        <nav class="bg-[#FBFBFB] border-gray-200 shadow-lg overflow-hidden">
+        <nav class="bg-[#FBFBFB] border-gray-200 shadow-lg overflow-hidden navbar">
             <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-4 w-[80%]">
                 <Link to="/" class="flex items-center">
                     <img src={Logo} className="h-8 mr-3" alt="Flowbite Logo" />

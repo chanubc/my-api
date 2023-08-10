@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { MyDiv } from "../HomeStyle";
 import { Link } from "react-router-dom";
 import { DatePicker } from "antd";
 import Navbar from "../include/Navbar";
 import '../css/home.css';
 import HomeImage from '../include/HomeImage';
 import Left from '../include/Left';
+import RightTop from '../include/RightTop';
+import RightBottom from '../include/RightBottom';
 
 // 필요한 코드를 추가하세요
 const Home = () => {
@@ -43,18 +44,33 @@ const Home = () => {
   return (
     <>
       <Navbar />
+
       <div class="wrapping">
+        {/* navbar제외 영역 */}
         <main id="content" class="content">
-          {/* <!-- // content --> */}
-          {/* <!-- Wide center column --> */}
+          {/* 가운데 정렬 */}
           <main class="wrapper flex mx-auto">
+
+            {/* 좌측 */}
             <Left />
-            <HomeImage />
+
+            {/* 가운데 */}
+            <section id="center_card" class="center_card  h-screen">
+              <HomeImage />
+            </section>
+
+            {/* 우측 */}
+            <aside id="right_card" class="w-[26%]  h-full ml-4">
+              <RightTop />
+              <RightBottom />
+            </aside>
+
           </main>
+
         </main>
-
-
       </div >
+
+
       <ul>
         <li><Link to="/">Home</Link></li>
         <li><Link to="/example">Example</Link></li>
@@ -65,7 +81,6 @@ const Home = () => {
 
       <div>
         <h1>홈페이지</h1>
-        <MyDiv>Styled-Component 예시</MyDiv>
       </div>
 
       {data.length !== 0 ?

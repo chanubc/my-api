@@ -39,15 +39,23 @@
 
 html,
 body {
-  overflow-y: auto;
   height: 100vh;
   margin: 0 auto;
   font-family: "Pretendard-Regular";
   background: linear-gradient(#DBE0DE, #D3DEDA);
 }
 
+
+.navbar{
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  z-index: 100;
+}
+
+/* navbar 제외한 영역 */
 .content {
-  /* overflow-y: hidden; */
+  overflow: scroll;
   /* height: 100%; */
   
   position: relative;
@@ -58,17 +66,13 @@ body {
   height: fit-content;
 }
 
+/* 가로 영역 패딩느낌 */
 .wrapper {
   /* height: calc(100vh - var(--navbar-height)); */
   /* margin: 0 auto; */
   height: 100%;
   width: 80%;
 }
-
-/* .wrapping{
-  margin-bottom: 31px;
-  height: fit-content;
-} */
 
 .center_card {
   width: 52%;
