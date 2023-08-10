@@ -4,7 +4,7 @@ import '../css/home.css'
 // 이미지 로컬 경로
 import ImgEx from "../img/farmMain.jpg";
 // import generateImageItems from '../function/data.js'; // data.js 파일의 함수를 가져옴
-
+import Loading from '../effect/Loading';
 
 
 const HomeImage = () => {
@@ -56,7 +56,8 @@ const HomeImage = () => {
                     {data.length !== 0 ? (
                         generateImageItems(data)
                     ) : (
-                        <h1>로딩중...</h1>
+                        
+                        <Loading />
                     )}
                 </ul>
             </div>
