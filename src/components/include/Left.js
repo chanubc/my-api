@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
 import ImgTop from "../img/left_top.png";
+import LogoProfile from "../img/nameIcon.svg";
+import LogoWrite from "../img/jam_write.svg";
 import '../css/home.css'
 
 const Left = () => {
@@ -8,41 +10,46 @@ const Left = () => {
         // < !--좌측 -- >
         <aside id="left_card" className="w-[22%] h-screen mr-4">
             {/* <!-- 내부카드 --> */}
-            <div className="w-full rounded-[20px] h-[85%] overflow-hidden shadow-lg bg-[#FAFAFA]">
+            <section className="w-full rounded-[20px] h-[85%] overflow-hidden shadow-lg bg-[#FAFAFA]">
 
-                {/* <!-- top image -->
-                <div class="top_img h-[22%] relative">
-                    <img class="w-full h-[100%] rounded-t-[20px]" src={ImgTop} alt="Sunset in the mountains"></img>
-                </div>
-                <div className='alignment-center absolute z-50'>
-                    <img className="w-10 h-10 p-1 rounded-full ring-1 ring-gray-300" src={ImgTop} alt="Bordered avatar" />
-                </div> */}
 
-                <div className="relative">
-                    <div className="a top_img h-[22%] relative">
-                        <img className="w-full h-[100%] rounded-t-[20px]" src={ImgTop} alt="Sunset in the mountains" />
+                {/* 상단 부 이미지 */}
+                <article className="relative">
+                    <div className="h-36 bg-neutral-700 rounded-t-[20px]">
+                        <img className="w-full h-full" src={LogoProfile} alt="Sunset in the mountains" />
                     </div>
-                    <div className="b absolute z-50 top-[50%] left-[50%] m-0 transform[-translate-x-1/2 -translate-y-1/2]">
-                        <img className="w-10 h-10 p-1 rounded-full ring-1 ring-gray-300" src={ImgTop} alt="Bordered avatar" />
+                    <div id="custom-ha" className='w-fit h-fit inline-block'>
+                        <img className="bg-white custom-ha w-[7.5rem] h-[7.5rem] rounded-[50%] ring-4 ring-gray-50" src={ImgTop} alt="Bordered avatar" />
                     </div>
-                </div>
+                </article>
 
-
-
-                <div className="flex flex-wrap justify-center">
-                    <div className="w-6/12 sm:w-4/12 px-4">
-                        <img src="https://www.creative-tim.com/learning-lab/tailwind-starter-kit/img/team-2-800x800.jpg" alt="..." className="shadow rounded-full max-w-full h-auto align-middle border-none" />
+                {/* 중반부 글 */}
+                {/* 가운데 정렬 하는법 */}
+                <article className="px-6 py-4 mt-[3.25rem] alignment-center">
+                    <div className='flex'>
+                        <img src={LogoProfile} alt='logo' />
+                        <p className="font-black text-xl ml-1">프로필</p>
                     </div>
-                </div>
-
-
-                <div className="px-6 py-4">
-                    <div className="font-bold text-xl mb-2">프로필</div>
-                    <p className="text-gray-700 text-base">
+                    <p className="font-semibold text-xl text-[#8F8F8F] mt-1">
                         010-1234-5678
                     </p>
-                </div>
-            </div>
+                </article>
+
+                {/* 하단 부 글 */}
+                <article className="px-6 py-2">
+                    <div className='flex my-auto'>
+                        <p className=" font-bold text-lg mb-2 text-[#00A884]">한줄소개</p>
+                        <img className='ml-auto' src={LogoWrite} alt='logo' />
+                    </div>
+                    <p className="text-[#666666] text-base font-medium">
+                        맛있고 건강한 채소를 키워요! 오늘도 논으로 밭으로 향한다</p>
+                    <p className="text-[#666666] text-base font-medium mt-3">
+                        반갑습니다 저는 고령에서 벼와 콩을 재배하고 있습니다.</p>
+                </article>
+
+
+
+            </section>
         </aside >
     );
 };

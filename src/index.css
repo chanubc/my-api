@@ -104,3 +104,11 @@ body {
   background: rgba(0, 0, 0, 0.05);
   border-radius: 5px;
 }
+
+/* 요소 수직정렬 */
+.alignment-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
