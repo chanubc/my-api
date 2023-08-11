@@ -59,3 +59,11 @@
 .picture ~ .guest_book {
   margin-top: 29px;
 }
+
+.alignment-center{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
