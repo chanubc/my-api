@@ -16,7 +16,7 @@ const Left = () => {
                 {/* 상단 부 이미지 */}
                 <article className="relative">
                     <div className="h-36 bg-neutral-700 rounded-t-[20px]">
-                        <img className="w-full h-full" src={LogoProfile} alt="Sunset in the mountains" />
+                        <img className="w-full h-full" src={ImgTop} alt="Sunset in the mountains" />
                     </div>
                     <div id="custom-ha" className='w-fit h-fit inline-block'>
                         <img className="bg-white custom-ha w-[7.5rem] h-[7.5rem] rounded-[50%] ring-4 ring-gray-50" src={ImgTop} alt="Bordered avatar" />
@@ -27,7 +27,7 @@ const Left = () => {
                 {/* 가운데 정렬 하는법 */}
                 <article className="px-6 py-4 mt-[3.25rem] alignment-center">
                     <div className='flex'>
-                        <img src={LogoProfile} alt='logo' />
+                        <img className='w-fit h-fit' src={LogoProfile} alt='logo' />
                         <p className="font-black text-xl ml-1">프로필</p>
                     </div>
                     <p className="font-semibold text-xl text-[#8F8F8F] mt-1">
@@ -37,8 +37,8 @@ const Left = () => {
 
                 {/* 하단 부 글 */}
                 <article className="px-6 py-2">
-                    <div className='flex my-auto'>
-                        <p className=" font-bold text-lg mb-2 text-[#00A884]">한줄소개</p>
+                    <div className='flex items-center justify-center mb-3'>
+                        <p className="font-bold text-lg text-[#00A884]">한줄소개</p>
                         <img className='ml-auto' src={LogoWrite} alt='logo' />
                     </div>
                     <p className="text-[#666666] text-base font-medium">
