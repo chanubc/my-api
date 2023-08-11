@@ -3,8 +3,11 @@ import { Link } from "react-router-dom";
 import '../css/home.css'
 // 이미지 로컬 경로
 import ImgEx from "../img/farmMain.jpg";
+import LogoWrite from "../img/jam_write.svg";
+import LogoHome from "../img/mdi_farm.svg";
 // import generateImageItems from '../function/data.js'; // data.js 파일의 함수를 가져옴
 import Loading from '../effect/Loading';
+import LoadingText from '../effect/LoadingText';
 
 
 const HomeImage = () => {
@@ -41,12 +44,17 @@ const HomeImage = () => {
     }, [data]);
 
     return (
-        // <!-- picture -->
+        // <!-- 나의농장 -->
         <section id="picture"
             className="picture w-full h-fit rounded-[20px] overflow-hidden shadow-lg bg-[#FAFAFA]">
-            {/* <!-- picture 영역 padding 적용 --> */}
-            <div className="px-6 py-5">
-                <div id="text_farm" className="font-bold text-xl mb-3">나의 농장</div>
+            {/* <!-- 나의농장 영역 padding 적용 --> */}
+            <article className="px-6 py-5">
+                <div className='flex items-center justify-center mb-3'>
+                    <img className='h-[1.4rem] w-[1.4rem] mr-[6px]' src={LogoHome} alt='logo' />
+                    <p id="text_farm" className="font-black text-xl">나의 농장</p>
+                    <img className='ml-auto' src={LogoWrite} alt='logo' />
+                </div>
+
                 <div className="image-container">
                     <img id="image_main" className="image h-[300px] rounded-md mb-3 bg-gray-800"
                         src={ImgEx} alt="Sunset in the mountains" />
@@ -56,11 +64,11 @@ const HomeImage = () => {
                     {data.length !== 0 ? (
                         generateImageItems(data)
                     ) : (
-                        
+
                         <Loading />
                     )}
                 </ul>
-            </div>
+            </article>
         </section>
     );
     // === html 코드
