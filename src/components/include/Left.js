@@ -7,7 +7,7 @@ const Left = () => {
         // < !--좌측 -- >
         <aside id="left_card" class="w-[22%] h-screen mr-4">
             {/* <!-- 내부카드 --> */}
-            <div class="w-full rounded-[20px] h-[85%] overflow-hidden shadow-lg bg-[#FAFAFA]">
+            <div class="w-full rounded-[20px] h-[87%] overflow-hidden shadow-lg bg-[#FAFAFA]">
 
                 {/* <!-- top image --> */}
                 <div class="top_img h-[22%]">
