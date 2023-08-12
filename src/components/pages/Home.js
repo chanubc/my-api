@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
 import { DatePicker } from "antd";
-import Navbar from "../include/Navbar";
+import Navbar from "../include/nav/Navbar";
 import '../css/home.css';
 import HomeImage from '../include/HomeImage';
 import HomeGuest from '../include/HomeGuest';
 import Left from '../include/Left';
-import RightTop from '../include/RightTop';
-import RightBottom from '../include/RightBottom';
+import RightTop from '../include/right/RightTop';
+import RightBottom from '../include/right/RightBottom';
 
 // 필요한 코드를 추가하세요
 const Home = () => {
@@ -91,13 +91,13 @@ const Home = () => {
           <>
             <h1> 유저 목록</h1>
             <ul>
-              {data.map((user) => (
-                <li key={user.id}>
-                  <img src={user.avatar} alt={""} />
+              {data.map((agent) => (
+                <li key={agent.id}>
+                  <img src={agent.avatar} alt={""} />
                   <p>
-                    이름: {user.first_name} {user.last_name}
+                    이름: {agent.first_name} {agent.last_name}
                   </p>
-                  <p>이메일: {user.email}</p>
+                  <p>이메일: {agent.email}</p>
                 </li>
               ))}
             </ul>

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
 import { DatePicker } from "antd";
-import Navbar from "../include/Navbar";
+import Navbar from "../include/nav/Navbar";
 import Left from '../include/Left';
-import RightTop from '../include/RightTop';
-import RightBottom from '../include/RightBottom';
+import RightTop from '../include/right/RightTop';
+import RightBottom from '../include/right/RightBottom';
 import GuestBook from '../include/GuestBook';
 
 const Guest = () => {
