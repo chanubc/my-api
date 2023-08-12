@@ -52,7 +52,7 @@ const HomeImage = () => {
                 <div className='flex items-center justify-center mb-3'>
                     <img className='h-[1.4rem] w-[1.4rem] mr-[6px]' src={LogoHome} alt='logo' />
                     <p id="text_farm" className="font-black text-xl">나의 농장</p>
-                    <img className='ml-auto' src={LogoWrite} alt='logo' />
+                    <img className='ml-auto rounded transition duration-150 ease-in-out hover:bg-[#D3DEDA] focus:outline-none focus:ring-0 active:text-primary-700' src={LogoWrite} alt='logo' />
                 </div>
 
                 <div className="image-container">

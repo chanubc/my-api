@@ -1,9 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Logo from '../img/Logo_farmerin.svg'; // 이미지 경로 설정
+import NavText from './nav/NavText'; // 이미지 경로 설정
 
 
 const Navbar = () => {
+
+    const location = useLocation();
+    const [currentPage, setCurrentPage] = useState('');
+
+    useEffect(() => {
+        setCurrentPage(location.pathname);
+    }, [location]);
     return (
         <nav className="bg-[#FBFBFB] border-gray-200 shadow-lg overflow-hidden navbar">
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-4 w-[80%]">
@@ -58,24 +66,9 @@ const Navbar = () => {
                             className="block w-full p-2 pl-10 text-sm text-gray-900  border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-50 "
                             placeholder="Search..."></input>
                     </div>
-                    <ul className="flex flex-col p-4 md:p-0 mt-4 font-bold md:flex-row md:space-x-[75px] md:mt-0 md:border-0">
-                        <li>
-                            <Link to='/' id="home"
-                                className="block py-2 pl-3 pr-4  bg-[#29A99A] rounded md:bg-transparent  md:p-0 hover:bg-transparent md:hover:bg-transparent md:hover:text-[#29A99A]">홈화면</Link>
 
-                        </li>
-                        <li>
-                            <Link to='/sales' id="sale"
-                                className="block py-2 pl-3 pr-4 rounded hover:bg-transparent md:hover:bg-transparent md:hover:text-[#29A99A] md:p-0">판매중인
-                                상품</Link>
-                        </li>
-                        <li>
-                            <Link to='/guest' id="guest"
-                                className="block py-2 pl-3 pr-4 rounded hover:bg-transparent md:hover:bg-transparent md:hover:text-[#29A99A] md:p-0">
-                                방명록</Link>
-                        </li>
+                    <NavText />
 
-                    </ul>
                 </div>
             </div>
         </nav>

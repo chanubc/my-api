@@ -40,10 +40,20 @@
 html,
 body {
   overflow-y: auto;
-  height: 100vh;
+  /* height: 100vh; */
   margin: 0 auto;
   font-family: "Pretendard-Regular";
   background: linear-gradient(#dbe0de, #d3deda);
+}
+
+/* navbar */
+.navbar {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--navbar-height);
 }
 
 /* navbar제외 영역 */
@@ -53,10 +63,11 @@ body {
 
   position: relative;
   padding: 31px 0;
-  /* height: calc(100vh - var(--navbar-height)); */
-  height: 100%;
+  /* margin-top: 68px; 원하는 값으로 조정 */
+  margin-top: var(--navbar-height);
+  /* height: 100%; */
   /* background: linear-gradient(#f6f6f6, #d3deda); */
-  height: fit-content;
+  /* height: fit-content; */
 }
 
 /* 가운데 가로 padding 느낌 */
