@@ -12,8 +12,6 @@ const RightTop = () => {
                 <div className="font-bold text-xl mb-2">이웃 목록</div>
 
                 <NeighborList />
-                <NeighborList />
-                <NeighborList />
 
                 <ButtonRight />
 
