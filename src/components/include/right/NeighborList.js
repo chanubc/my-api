@@ -37,15 +37,15 @@ const NeighborList = () => {
         <>
             {data.length !== 0 ? (
                 <>
-                    {data.slice(0, 3).map((user) => (
+                    {data.slice(0, 3).map((user, index) => (
                         <>
-                            <div key={user.id}>
-                                <section class="flex items-center py-2 hover:bg-[#D3DEDA] hover:rounded-[10px] duration-300 ease-in-out">
+                            <div key={index} className='block' >
+                                <section className="flex items-center py-2 hover:bg-[#D3DEDA] hover:rounded-[10px] duration-300 ease-in-out">
 
-                                    <img class="w-14 h-14 rounded-full mr-2 bg-black" src={user.avatar} alt="Avatar of Jonathan Reinink" />
-                                    <div class="text-base font-semibold align-middle items-center justify-center">
-                                        <p class="text-gray-900">{user.first_name}</p>
-                                        <p class="text-[#8C8C8C]">{user.email}</p>
+                                    <img className="w-14 h-14 rounded-full mr-2 bg-black" src={user.avatar} alt="Avatar of Jonathan Reinink" />
+                                    <div className="text-base font-semibold align-middle items-center justify-center">
+                                        <p className="text-gray-900">{user.first_name}</p>
+                                        <p className="text-[#8C8C8C]">{user.email}</p>
                                     </div>
 
                                 </section>
