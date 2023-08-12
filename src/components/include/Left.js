@@ -30,7 +30,7 @@ const Left = () => {
 
             const jsonData = await response.json();
             setData(jsonData.data);
-            console.log(data);
+            // console.log(data);
 
         } catch (error) {
             console.error("Fetch 도중 오류 발생");
