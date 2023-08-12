@@ -5,13 +5,6 @@ import NavText from './nav/NavText'; // 이미지 경로 설정
 
 
 const Navbar = () => {
-
-    const location = useLocation();
-    const [currentPage, setCurrentPage] = useState('');
-
-    useEffect(() => {
-        setCurrentPage(location.pathname);
-    }, [location]);
     return (
         <nav className="bg-[#FBFBFB] border-gray-200 shadow-lg overflow-hidden navbar">
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-4 w-[80%]">
