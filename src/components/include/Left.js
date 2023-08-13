@@ -39,17 +39,19 @@ const Left = () => {
 
     const fetchData = async () => {
         try {
-            const response = await fetch("https://9bf2-121-135-149-228.ngrok-free.app/farmin/posts/", {
+            const response = await fetch("https://9bf2-121-135-149-228.ngrok-free.app/farmin/posts/?format=json", {
                 headers: {
                     "Access-Control-Allow-Origin": "*",
-                    "content-type" : "application/json"
+                    "content-type": "application/json",
+                    'ngrok-skip-browser-warning': '69420',
+
                 }
             });
-    
+
             if (!response.ok) {
                 throw new Error("응답 없음");
             }
-    
+
             const jsonData = await response.json();
             setData(jsonData.data);
             console.log(data);
@@ -58,7 +60,7 @@ const Left = () => {
         }
     }
 
-    
+
 
 
     return (
@@ -98,8 +100,8 @@ const Left = () => {
                             <article className="px-6 py-2">
                                 <div className='flex items-center justify-center mb-3'>
                                     <p className="font-bold text-lg text-[#00A884]">한줄소개</p>
-                                    <img className='ml-auto rounded transition duration-150 ease-in-out hover:bg-[#D3DEDA] focus:outline-none focus:ring-0 active:text-primary-700' 
-                                    src={LogoWrite} alt='logo' />
+                                    <img className='ml-auto rounded transition duration-150 ease-in-out hover:bg-[#D3DEDA] focus:outline-none focus:ring-0 active:text-primary-700'
+                                        src={LogoWrite} alt='logo' />
                                 </div>
                                 <p className="text-[#666666] text-base font-medium">
                                     맛있고 건강한 채소를 키워요! 오늘도 논으로 밭으로 향한다</p>

@@ -38,7 +38,7 @@ const HomeImage = () => {
     //             throw new Error("응답 없음");
     //         }
 
-            
+
     //         const jsonData = await response.json();
     //         setData(jsonData.data);
     //         console.log(data);
@@ -53,14 +53,15 @@ const HomeImage = () => {
             const response = await axios.get("https://9bf2-121-135-149-228.ngrok-free.app/farmin/posts/?format=json", {
                 headers: {
                     "Access-Control-Allow-Origin": "*",
-                    "content-type" : "application/json"
+                    "content-type": "application/json",
+                    'ngrok-skip-browser-warning': '69420',
                 }
             });
-    
+
             if (!response.ok) {
                 throw new Error("응답 없음");
             }
-    
+
             const jsonData = await response.json();
             setData(jsonData.data);
             console.log(data);
@@ -68,7 +69,7 @@ const HomeImage = () => {
             console.error("Fetch 도중 오류 발생");
         }
     }
-    
+
 
     useEffect(() => {
         console.log("데이터: " + data);
