@@ -25,7 +25,7 @@ const HomeImage = () => {
 
     const fetchData = async () => {
         try {
-            const response = await fetch("https://e558-115-94-178-52.ngrok-free.app/farmin/posts/")
+            const response = await fetch("https://773d-121-135-149-228.ngrok-free.app/farmin/posts/")
             if (!response.ok) {
                 throw new Error("응답 없음");
             }
