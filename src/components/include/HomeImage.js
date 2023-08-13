@@ -8,6 +8,7 @@ import LogoHome from "../img/mdi_farm.svg";
 // import generateImageItems from '../function/data.js'; // data.js 파일의 함수를 가져옴
 import Loading from '../effect/Loading';
 import LoadingText from '../effect/LoadingText';
+import axios from 'axios'; // Import Axios
 
 
 const HomeImage = () => {
@@ -49,7 +50,7 @@ const HomeImage = () => {
 
     const fetchData = async () => {
         try {
-            const response = await fetch("https://773d-121-135-149-228.ngrok-free.app/farmin/posts/?format=json/", {
+            const response = await axios.get("https://9bf2-121-135-149-228.ngrok-free.app/farmin/posts/", {
                 headers: {
                     "Access-Control-Allow-Origin": "*",
                     "content-type" : "application/json"
