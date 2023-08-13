@@ -5,6 +5,8 @@ import LogoProfile from "../img/nameIcon.svg";
 import LogoWrite from "../img/jam_write.svg";
 import LoadingText from '../effect/LoadingText';
 import { Skeleton } from 'antd';
+import axios from 'axios'; // Import Axios
+
 
 
 import '../css/home.css'
@@ -21,44 +23,37 @@ const Left = () => {
         return () => clearTimeout(delay);
     }, [])
 
-    // const fetchData = async () => {
-    //     try {
-    //         const response = await fetch("https://reqres.in/api/users?page=1")
-    //         if (!response.ok) {
-    //             throw new Error("응답 없음");
-    //         }
-
-    //         const jsonData = await response.json();
-    //         setData(jsonData.data);
-    //         // console.log(data);
-
-    //     } catch (error) {
-    //         console.error("Fetch 도중 오류 발생");
-    //     }
-    // }
-
     const fetchData = async () => {
         try {
-            const response = await fetch("https://9bf2-121-135-149-228.ngrok-free.app/farmin/posts/?format=json", {
-                headers: {
-                    "Access-Control-Allow-Origin": "*",
-                    "content-type": "application/json",
-                    'ngrok-skip-browser-warning': '69420',
-
-                }
-            });
-
+            const response = await fetch("https://reqres.in/api/users?page=1")
             if (!response.ok) {
                 throw new Error("응답 없음");
             }
 
             const jsonData = await response.json();
             setData(jsonData.data);
-            console.log(data);
+            // console.log(data);
+
         } catch (error) {
             console.error("Fetch 도중 오류 발생");
         }
     }
+
+    // const fetchData = async () => {
+    //     try {
+    //         const response = await axios.get("https://9bf2-121-135-149-228.ngrok-free.app/farmin/posts/?format=json")
+
+    //         if (!response.ok) {
+    //             throw new Error("응답 없음");
+    //         }
+
+    //         const jsonData = await response.json();
+    //         setData(jsonData.data);
+    //         console.log(data);
+    //     } catch (error) {
+    //         console.error("Fetch 도중 오류 발생");
+    //     }
+    // }
 
 
 
@@ -87,7 +82,7 @@ const Left = () => {
                                     <img className='w-fit h-fit' src={LogoProfile} alt='logo' />
                                     {/* <p className="font-black text-xl ml-1">프로필</p> */}
                                     <p className="font-bold text-xl ml-1">
-                                        {data[0].title} {data[0].create_date}
+                                        {data[0].first_name} {data[0].last_name}
                                     </p>
 
                                 </div>
