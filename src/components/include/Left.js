@@ -21,21 +21,44 @@ const Left = () => {
         return () => clearTimeout(delay);
     }, [])
 
+    // const fetchData = async () => {
+    //     try {
+    //         const response = await fetch("https://reqres.in/api/users?page=1")
+    //         if (!response.ok) {
+    //             throw new Error("응답 없음");
+    //         }
+
+    //         const jsonData = await response.json();
+    //         setData(jsonData.data);
+    //         // console.log(data);
+
+    //     } catch (error) {
+    //         console.error("Fetch 도중 오류 발생");
+    //     }
+    // }
+
     const fetchData = async () => {
         try {
-            const response = await fetch("https://reqres.in/api/users?page=1")
+            const response = await fetch("https://9bf2-121-135-149-228.ngrok-free.app/farmin/posts/", {
+                headers: {
+                    "Access-Control-Allow-Origin": "*",
+                    "content-type" : "application/json"
+                }
+            });
+    
             if (!response.ok) {
                 throw new Error("응답 없음");
             }
-
+    
             const jsonData = await response.json();
             setData(jsonData.data);
-            // console.log(data);
-
+            console.log(data);
         } catch (error) {
             console.error("Fetch 도중 오류 발생");
         }
     }
+
+    
 
 
     return (
@@ -62,7 +85,7 @@ const Left = () => {
                                     <img className='w-fit h-fit' src={LogoProfile} alt='logo' />
                                     {/* <p className="font-black text-xl ml-1">프로필</p> */}
                                     <p className="font-bold text-xl ml-1">
-                                        {data[0].first_name} {data[0].last_name}
+                                        {data[0].title} {data[0].create_date}
                                     </p>
 
                                 </div>

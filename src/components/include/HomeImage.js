@@ -50,7 +50,7 @@ const HomeImage = () => {
 
     const fetchData = async () => {
         try {
-            const response = await axios.get("https://9bf2-121-135-149-228.ngrok-free.app/farmin/posts/", {
+            const response = await axios.get("https://9bf2-121-135-149-228.ngrok-free.app/farmin/posts/?format=json", {
                 headers: {
                     "Access-Control-Allow-Origin": "*",
                     "content-type" : "application/json"
@@ -109,7 +109,8 @@ const HomeImage = () => {
     function generateImageItems(data) {
         return data.slice(0, 4).map((agent, index) => (
             <li key={index} className={`w-1/4 bg-gray-500 ${index !== 3 ? 'mr-3' : ''} rounded-[5px]`}>
-                <img className="image-item" src={agent.avatar} alt="User Avatar" />
+                {/* <img className="image-item" src={agent.avatar} alt="User Avatar" /> */}
+                <div className='teest'>{agent.title}</div>
             </li>
         ));
 

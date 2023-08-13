@@ -1,0 +1,5 @@
+[[redirects]]
+  from = "/proxy/*"
+  to = "https://퉁일이의사이트/:splat"
+  status = 200
+  force = true
