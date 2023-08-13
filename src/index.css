@@ -46,6 +46,12 @@ body {
   background: linear-gradient(#dbe0de, #d3deda);
 }
 
+/* 스크롤바 안보이게 */
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
 /* navbar */
 .navbar {
   position: fixed;
