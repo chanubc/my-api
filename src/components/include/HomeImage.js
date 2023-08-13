@@ -23,21 +23,51 @@ const HomeImage = () => {
         return () => clearTimeout(delay);
     }, [])
 
+    // const fetchData = async () => {
+    //     try {
+    //         const response = await fetch("https://reqres.in/api/users?page=1")
+
+    //         headers: {
+    //             "Access-Control-Allow-Origin": "*"
+    //         }
+    //     });
+
+
+    //         if (!response.ok) {
+    //             throw new Error("응답 없음");
+    //         }
+
+            
+    //         const jsonData = await response.json();
+    //         setData(jsonData.data);
+    //         console.log(data);
+
+    //     } catch (error) {
+    //         console.error("Fetch 도중 오류 발생");
+    //     }
+    // }
+
     const fetchData = async () => {
         try {
-            const response = await fetch("https://773d-121-135-149-228.ngrok-free.app/farmin/posts/?format=json/")
+            const response = await fetch("https://773d-121-135-149-228.ngrok-free.app/farmin/posts/?format=json/", {
+                headers: {
+                    "Access-Control-Allow-Origin": "*",
+                    "content-type" : "application/json"
+                }
+            });
+    
             if (!response.ok) {
                 throw new Error("응답 없음");
             }
-
+    
             const jsonData = await response.json();
             setData(jsonData.data);
             console.log(data);
-
         } catch (error) {
             console.error("Fetch 도중 오류 발생");
         }
     }
+    
 
     useEffect(() => {
         console.log("데이터: " + data);
