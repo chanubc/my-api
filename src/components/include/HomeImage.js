@@ -25,7 +25,7 @@ const HomeImage = () => {
 
     const fetchData = async () => {
         try {
-            const response = await fetch("https://reqres.in/api/users?page=1")
+            const response = await fetch("https://e558-115-94-178-52.ngrok-free.app/farmin/posts/")
             if (!response.ok) {
                 throw new Error("응답 없음");
             }
@@ -49,7 +49,7 @@ const HomeImage = () => {
             className="picture w-full h-fit rounded-[20px] overflow-hidden shadow-lg bg-[#FAFAFA]">
             {/* <!-- 나의농장 영역 padding 적용 --> */}
             <article className="px-6 py-5">
-                <div className='flex items-center justify-center mb-3'>
+                <div className='flex items-center mb-3'>
                     <img className='h-[1.4rem] w-[1.4rem] mr-[6px]' src={LogoHome} alt='logo' />
                     <p id="text_farm" className="font-black text-xl">나의 농장</p>
                     <img className='ml-auto rounded transition duration-150 ease-in-out hover:bg-[#D3DEDA] focus:outline-none focus:ring-0 active:text-primary-700' src={LogoWrite} alt='logo' />

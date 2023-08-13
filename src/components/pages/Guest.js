@@ -5,7 +5,7 @@ import Navbar from "../include/nav/Navbar";
 import Left from '../include/Left';
 import RightTop from '../include/right/RightTop';
 import RightBottom from '../include/right/RightBottom';
-import GuestBook from '../include/GuestBook';
+import GuestBook from '../include/guest/GuestBook';
 
 const Guest = () => {
 
@@ -28,7 +28,7 @@ const Guest = () => {
 
       const jsonData = await response.json();
       setData(jsonData.data);
-      console.log(data);
+      // console.log(data);
 
     } catch (error) {
       console.error("Fetch 도중 오류 발생");
@@ -54,6 +54,7 @@ const Guest = () => {
             {/* 가운데 */}
             <section id="center_card" class="center_card  h-screen">
               <GuestBook />
+
             </section>
 
             {/* 우측 */}
