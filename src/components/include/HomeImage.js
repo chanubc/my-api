@@ -24,51 +24,45 @@ const HomeImage = () => {
         return () => clearTimeout(delay);
     }, [])
 
+    const fetchData = async () => {
+        try {
+            const response = await fetch("https://reqres.in/api/users?page=1")
+
+            if (!response.ok) {
+                throw new Error("응답 없음");
+            }
+
+            const jsonData = await response.json();
+            setData(jsonData.data);
+            console.log(data);
+
+        } catch (error) {
+            console.error("Fetch 도중 오류 발생");
+        }
+    }
+
     // const fetchData = async () => {
     //     try {
-    //         const response = await fetch("https://reqres.in/api/users?page=1")
-
-    //         headers: {
-    //             "Access-Control-Allow-Origin": "*"
-    //         }
-    //     });
-
+    //         const response = await axios.get("https://9bf2-121-135-149-228.ngrok-free.app/farmin/posts/?format=json", {
+    //             headers: {
+    //                 "Access-Control-Allow-Origin": "*",
+    //                 "content-type": "application/json",
+    //                 'ngrok-skip-browser-warning': '69420',
+    //             }
+    //         });
 
     //         if (!response.ok) {
     //             throw new Error("응답 없음");
     //         }
 
-            
     //         const jsonData = await response.json();
     //         setData(jsonData.data);
     //         console.log(data);
-
     //     } catch (error) {
     //         console.error("Fetch 도중 오류 발생");
     //     }
     // }
 
-    const fetchData = async () => {
-        try {
-            const response = await axios.get("https://9bf2-121-135-149-228.ngrok-free.app/farmin/posts/?format=json", {
-                headers: {
-                    "Access-Control-Allow-Origin": "*",
-                    "content-type" : "application/json"
-                }
-            });
-    
-            if (!response.ok) {
-                throw new Error("응답 없음");
-            }
-    
-            const jsonData = await response.json();
-            setData(jsonData.data);
-            console.log(data);
-        } catch (error) {
-            console.error("Fetch 도중 오류 발생");
-        }
-    }
-    
 
     useEffect(() => {
         console.log("데이터: " + data);
@@ -109,8 +103,8 @@ const HomeImage = () => {
     function generateImageItems(data) {
         return data.slice(0, 4).map((agent, index) => (
             <li key={index} className={`w-1/4 bg-gray-500 ${index !== 3 ? 'mr-3' : ''} rounded-[5px]`}>
-                {/* <img className="image-item" src={agent.avatar} alt="User Avatar" /> */}
-                <div className='teest'>{agent.title}</div>
+                <img className="image-item" src={agent.avatar} alt="User Avatar" />
+                {/* <div className='teest'>{agent.title}</div> */}
             </li>
         ));
 

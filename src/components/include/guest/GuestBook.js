@@ -60,6 +60,8 @@ const GuestBook = () => {
                     <img className='h-[1.1rem] w-[1.1rem] mr-[6px]' src={IconMessage} alt='logo' />
                     <p className="font-bold text-xl">방명록</p>
                 </article>
+
+                
                
                 
 
