@@ -1,5 +1,5 @@
 [[redirects]]
   from = "/proxy/*"
-  to = "https://퉁일이의사이트/:splat"
+  to = "https://farmer-in-nongtori.netlify.app/:splat"
   status = 200
   force = true
