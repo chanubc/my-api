@@ -5,6 +5,8 @@ import LogoProfile from "../img/nameIcon.svg";
 import LogoWrite from "../img/jam_write.svg";
 import LoadingText from '../effect/LoadingText';
 import { Skeleton } from 'antd';
+import axios from 'axios'; // Import Axios
+
 
 
 import '../css/home.css'
@@ -36,6 +38,24 @@ const Left = () => {
             console.error("Fetch 도중 오류 발생");
         }
     }
+
+    // const fetchData = async () => {
+    //     try {
+    //         const response = await axios.get("https://9bf2-121-135-149-228.ngrok-free.app/farmin/posts/?format=json")
+
+    //         if (!response.ok) {
+    //             throw new Error("응답 없음");
+    //         }
+
+    //         const jsonData = await response.json();
+    //         setData(jsonData.data);
+    //         console.log(data);
+    //     } catch (error) {
+    //         console.error("Fetch 도중 오류 발생");
+    //     }
+    // }
+
+
 
 
     return (
@@ -75,8 +95,8 @@ const Left = () => {
                             <article className="px-6 py-2">
                                 <div className='flex items-center justify-center mb-3'>
                                     <p className="font-bold text-lg text-[#00A884]">한줄소개</p>
-                                    <img className='ml-auto rounded transition duration-150 ease-in-out hover:bg-[#D3DEDA] focus:outline-none focus:ring-0 active:text-primary-700' 
-                                    src={LogoWrite} alt='logo' />
+                                    <img className='ml-auto rounded transition duration-150 ease-in-out hover:bg-[#D3DEDA] focus:outline-none focus:ring-0 active:text-primary-700'
+                                        src={LogoWrite} alt='logo' />
                                 </div>
                                 <p className="text-[#666666] text-base font-medium">
                                     맛있고 건강한 채소를 키워요! 오늘도 논으로 밭으로 향한다</p>
