@@ -8,6 +8,7 @@ import LogoHome from "../img/mdi_farm.svg";
 // import generateImageItems from '../function/data.js'; // data.js 파일의 함수를 가져옴
 import Loading from '../effect/Loading';
 import LoadingText from '../effect/LoadingText';
+import axios from 'axios'; // Import Axios
 
 
 const HomeImage = () => {
@@ -23,21 +24,51 @@ const HomeImage = () => {
         return () => clearTimeout(delay);
     }, [])
 
+    // const fetchData = async () => {
+    //     try {
+    //         const response = await fetch("https://reqres.in/api/users?page=1")
+
+    //         headers: {
+    //             "Access-Control-Allow-Origin": "*"
+    //         }
+    //     });
+
+
+    //         if (!response.ok) {
+    //             throw new Error("응답 없음");
+    //         }
+
+            
+    //         const jsonData = await response.json();
+    //         setData(jsonData.data);
+    //         console.log(data);
+
+    //     } catch (error) {
+    //         console.error("Fetch 도중 오류 발생");
+    //     }
+    // }
+
     const fetchData = async () => {
         try {
-            const response = await fetch("https://773d-121-135-149-228.ngrok-free.app/farmin/posts/?format=json/")
+            const response = await axios.get("https://9bf2-121-135-149-228.ngrok-free.app/farmin/posts/?format=json", {
+                headers: {
+                    "Access-Control-Allow-Origin": "*",
+                    "content-type" : "application/json"
+                }
+            });
+    
             if (!response.ok) {
                 throw new Error("응답 없음");
             }
-
+    
             const jsonData = await response.json();
             setData(jsonData.data);
             console.log(data);
-
         } catch (error) {
             console.error("Fetch 도중 오류 발생");
         }
     }
+    
 
     useEffect(() => {
         console.log("데이터: " + data);
@@ -78,7 +109,8 @@ const HomeImage = () => {
     function generateImageItems(data) {
         return data.slice(0, 4).map((agent, index) => (
             <li key={index} className={`w-1/4 bg-gray-500 ${index !== 3 ? 'mr-3' : ''} rounded-[5px]`}>
-                <img className="image-item" src={agent.avatar} alt="User Avatar" />
+                {/* <img className="image-item" src={agent.avatar} alt="User Avatar" /> */}
+                <div className='teest'>{agent.title}</div>
             </li>
         ));
 

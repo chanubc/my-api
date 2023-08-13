@@ -46,6 +46,8 @@ body {
   background: linear-gradient(#dbe0de, #d3deda);
 }
 
+
+
 /* navbar */
 .navbar {
   position: fixed;
@@ -122,4 +124,12 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.scroll_seen::-webkit-scrollbar {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width: fit-content;
+  height: fit-content;
+  /* 다른 스타일 속성들을 여기에 추가하세요 */
 }

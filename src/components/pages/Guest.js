@@ -6,6 +6,7 @@ import Left from '../include/Left';
 import RightTop from '../include/right/RightTop';
 import RightBottom from '../include/right/RightBottom';
 import GuestBook from '../include/guest/GuestBook';
+import AxiosTest from '../include/right/AxiosTest';
 
 const Guest = () => {
 
@@ -54,6 +55,7 @@ const Guest = () => {
             {/* 가운데 */}
             <section id="center_card" class="center_card  h-screen">
               <GuestBook />
+              <AxiosTest /> 
 
             </section>
 

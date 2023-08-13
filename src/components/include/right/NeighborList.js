@@ -39,7 +39,7 @@ const NeighborList = () => {
                 <>
                     {data.slice(0, 3).map((user, index) => (
                         <>
-                            <div key={index} className='block' >
+                            <div key={index} className='block overflow-hidden' >
                                 <section className="flex items-center py-2 hover:bg-[#D3DEDA] hover:rounded-[10px] duration-300 ease-in-out">
 
                                     <img className="w-14 h-14 rounded-full mr-2 bg-black" src={user.avatar} alt="Avatar of Jonathan Reinink" />
