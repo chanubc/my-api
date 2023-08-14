@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 const AxiosTest = () => {
-    const [title, setTitle] = useState(""); // 제목 값을 저장하는 상태 변수
+    const [inputTest, setTitle] = useState(""); // 제목 값을 저장하는 상태 변수
 
     const handleSubmit = async () => {
         try {
             const response = await axios.post("https://9bf2-121-135-149-228.ngrok-free.app/farmin/posts/", {
                 
-                "title": title,
+                "title": inputTest,
                
                 "create_date": getCurrentTime(),
                 
@@ -32,7 +32,7 @@ const AxiosTest = () => {
         <div className='bg-gray-900 h-fit'>
             <input
                 type="text"
-                value={title}
+                value={inputTest}
                 onChange={(e) => setTitle(e.target.value)}
                 placeholder="제목"
             />
