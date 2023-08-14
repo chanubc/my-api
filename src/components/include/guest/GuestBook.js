@@ -19,17 +19,6 @@ const GuestBook = () => {
                 {/* 중반부 박스 */}
                 <div className='h-[29rem] overflow-y-scroll'>
                     <ChatItem />
-                    <ChatItem />
-                    <ChatItem />
-                    <ChatItem />
-                    <ChatItem />
-                    <ChatItem />
-                    <ChatItem />
-                    <ChatItem />
-                    <ChatItem />
-                    <ChatItem />
-                    <ChatItem />
-                    <ChatItem />
                 </div>
 
 
