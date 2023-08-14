@@ -8,8 +8,7 @@ const ButtonRight = () => {
             </button> */}
 
             <button
-
-                class="inline-block rounded-[15px] w-full h-11  bg-[#00A884] mt-4 text-sm font-semibold  leading-normal text-white shadow-md transition duration-150 ease-in-out
+                className="inline-block rounded-[15px] w-full h-11  bg-[#00A884] mt-4 text-sm font-semibold  leading-normal text-white shadow-md transition duration-150 ease-in-out
                  hover:bg-[#0F8E73] active:bg-[#00755C] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0  active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]">
                 친구 목록
             </button>
