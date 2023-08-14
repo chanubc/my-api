@@ -43,23 +43,23 @@ const Guest = () => {
   return (
     <>
       <Navbar />
-      <div class="wrapping">
+      <div className="wrapping">
         {/* navbar제외 영역 */}
-        <main id="content" class="content">
+        <main id="content" className="content">
           {/* 가운데 정렬 */}
-          <main class="wrapper flex mx-auto">
+          <main className="wrapper flex mx-auto">
 
             {/* 좌측 */}
             <Left />
 
             {/* 가운데 */}
-            <section id="center_card" class="center_card  h-screen">
+            <section id="center_card" className="center_card  h-screen">
               <GuestBook />
 
             </section>
 
             {/* 우측 */}
-            <aside id="right_card" class="w-[26%]  h-full ml-4">
+            <aside id="right_card" className="w-[26%]  h-full ml-4">
               <RightTop />
               <RightBottom />
             </aside>
