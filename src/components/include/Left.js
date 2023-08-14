@@ -25,27 +25,36 @@ const Left = () => {
 
     const fetchData = async () => {
         try {
-            const response = await fetch("https://reqres.in/api/users?page=1")
+            const response = await fetch("https://reqres.in/api/users?page=1",{
+                headers: {
+                    "Access-Control-Allow-Origin": "*",
+                    "content-type": "application/json",
+                }
+
+            });
+
             if (!response.ok) {
                 throw new Error("응답 없음");
             }
 
             const jsonData = await response.json();
             setData(jsonData.data);
-            // console.log(data);
+            console.log(data);
 
         } catch (error) {
             console.error("Fetch 도중 오류 발생");
         }
     }
-
+    // const baseUrl = 'http://192.168.61.6:8000/farmin/posts/'
+    // const proxyUrl = 'https://cors-proxy.org/api/'
     // const fetchData = async () => {
     //     try {
-    //         const response = await axios.get("https://9bf2-121-135-149-228.ngrok-free.app/farmin/posts/?format=json", {
+    //         const response = await axios.get('http://192.168.61.6:8000/farmin/posts/', {
     //             headers: {
     //                 "Access-Control-Allow-Origin": "*",
     //                 "content-type": "application/json",
     //                 'ngrok-skip-browser-warning': '69420',
+    //                 'cors-proxy-url': { baseUrl }
     //             }
     //         });
 
@@ -61,8 +70,9 @@ const Left = () => {
     //     }
     // }
 
-
-
+    // useEffect(() => {
+    //     console.log("데이터: " + data);
+    // }, [data]);
 
 
     return (
