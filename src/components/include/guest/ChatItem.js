@@ -46,7 +46,7 @@ const ChatItem = () => {
                     {data.map((item) => (
                         <>
                             {/* <!-- 채팅 item --> */}
-                            <main className='mb-3' key={item.id}>
+                            <main className='mb-3 mr-6' key={item.id}>
                                 <p className='flex items-center justify-center text-sm mb-1'>
                                     {item.last_name}
                                 </p>

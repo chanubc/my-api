@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import IconButton from '../../img/Button_write.svg'
 
-const AxiosTest = () => {
+const InputButton = () => {
     const [inputTest, setTitle] = useState(""); // 제목 값을 저장하는 상태 변수
 
     const handleSubmit = async () => {
@@ -112,4 +112,4 @@ const AxiosTest = () => {
     );
 }
 
-export default AxiosTest;
+export default InputButton;

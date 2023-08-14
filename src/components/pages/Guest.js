@@ -6,7 +6,7 @@ import Left from '../include/Left';
 import RightTop from '../include/right/RightTop';
 import RightBottom from '../include/right/RightBottom';
 import GuestBook from '../include/guest/GuestBook';
-import AxiosTest from '../include/guest/AxiosTest';
+import AxiosTest from '../include/guest/InputButton';
 
 const Guest = () => {
 
