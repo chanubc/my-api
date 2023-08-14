@@ -29,14 +29,14 @@ const AxiosTest = () => {
     };
 
     return (
-        <div>
+        <div className='bg-gray-900 h-fit'>
             <input
                 type="text"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
                 placeholder="제목"
             />
-            <button onClick={handleSubmit}>제출</button>
+            <button className='bg-blue-500 w-7 h-7' onClick={handleSubmit}>제출</button>
         </div>
     );
 }

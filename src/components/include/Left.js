@@ -41,7 +41,13 @@ const Left = () => {
 
     // const fetchData = async () => {
     //     try {
-    //         const response = await axios.get("https://9bf2-121-135-149-228.ngrok-free.app/farmin/posts/?format=json")
+    //         const response = await axios.get("https://9bf2-121-135-149-228.ngrok-free.app/farmin/posts/?format=json", {
+    //             headers: {
+    //                 "Access-Control-Allow-Origin": "*",
+    //                 "content-type": "application/json",
+    //                 'ngrok-skip-browser-warning': '69420',
+    //             }
+    //         });
 
     //         if (!response.ok) {
     //             throw new Error("응답 없음");
@@ -54,6 +60,7 @@ const Left = () => {
     //         console.error("Fetch 도중 오류 발생");
     //     }
     // }
+
 
 
 
