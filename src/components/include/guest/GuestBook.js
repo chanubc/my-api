@@ -26,7 +26,7 @@ const GuestBook = () => {
 
             </main>
             {/* 하단부 input */}
-            <div className='h-fit w-full bottom-0 mb-7 absolute pl-6 pr-4 py-5 justify-center items-center bg-slate-700'>
+            <div className='h-fit w-full bottom-0  absolute pl-4 pr-4 py-5 justify-center items-center '>
                 <AxiosTest />
             </div>
         </section>
