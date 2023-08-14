@@ -3,7 +3,7 @@ import axios from 'axios';
 import IconButton from '../../img/Button_write.svg'
 
 const InputButton = () => {
-    const [inputTest, setTitle] = useState(""); // 제목 값을 저장하는 상태 변수
+    const [inputTest, setTextareaValue] = useState(""); // 제목 값을 저장하는 상태 변수
 
     const handleSubmit = async () => {
         try {
@@ -29,7 +29,7 @@ const InputButton = () => {
         return new Date().toISOString();
     };
 
-    const [textareaValue, setTextareaValue] = useState('');
+    // const [textareaValue, setTextareaValue] = useState('');
 
     const handleTextareaChange = (event) => {
         setTextareaValue(event.target.value);
@@ -65,12 +65,12 @@ const InputButton = () => {
                         id="exampleFormControlTextarea1"
                         className="peer focus:outline-[#29A99A] focus:border-[#29A99A] block border-[#29A99A] border h-[60px] w-full rounded-xl bg-transparent px-3 py-[0.32rem] leading-[1.6] focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
                         rows="4"
-                        value={textareaValue}
+                        value={inputTest}
                         onChange={handleTextareaChange}
                     ></textarea>
                     <label
                         htmlFor="exampleFormControlTextarea1"
-                        className={`font-medium pointer-events-none absolute left-3 top-0 bottom-3 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out ${textareaValue.trim() === '' ? '' : 'opacity-0'
+                        className={`font-medium pointer-events-none absolute left-3 top-0 bottom-3 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out ${inputTest.trim() === '' ? '' : 'opacity-0'
                             } peer-focus:-translate-y-[1.5rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary`}
                     >
                         방명록을 남겨주세요
