@@ -17,8 +17,8 @@ const ChatItem = () => {
                     <p className='block w-full ml-2 text-base font-semibold overflow-x-hidden overflow-y-auto flex-grow'>
                         저는 송아지 키우는데 
                     </p>
-                    <div className='flex items-end'>
-                        <img className='p-1 mr-1 rounded hover:bg-[#D3DEDA]' src={IconWrite} alt='write'></img>
+                    <div className='flex items-end me-3'>
+                        <img className='p-1  rounded hover:bg-[#D3DEDA]' src={IconWrite} alt='write'></img>
                         <img className='p-1 rounded hover:bg-[#D3DEDA]' src={IconDelete} alt='delete'></img>
                     </div>
                 </section>
