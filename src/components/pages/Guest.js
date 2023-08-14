@@ -55,7 +55,6 @@ const Guest = () => {
             {/* 가운데 */}
             <section id="center_card" class="center_card  h-screen">
               <GuestBook />
-              
 
             </section>
 

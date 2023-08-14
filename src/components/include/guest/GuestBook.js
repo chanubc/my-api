@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import IconMessage from '../../img/MessageIcon.svg'
 import AxiosTest from './AxiosTest';
 import ChatBox from './ChatBox';
+import ChatItem from './ChatItem';
 
 
 const GuestBook = () => {
@@ -19,8 +20,7 @@ const GuestBook = () => {
 
                 {/* 중반부 박스 */}
                 <div className='h-[29rem] overflow-y-scroll bg-slate-400'>
-                    
-
+                    <ChatItem />
                 </div>
 
 

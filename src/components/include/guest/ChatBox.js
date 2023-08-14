@@ -13,9 +13,7 @@ const ChatBox = () => {
                 <div className='bg-gray-500 h-[400px]'/>
                 <div className='bg-gray-500 h-[400px]'/>
                 <div className='bg-gray-500 h-[400px]'/>
-               
-
-
+     
             </div>
             
         
