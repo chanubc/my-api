@@ -8,6 +8,7 @@ import HomeGuest from '../include/HomeGuest';
 import Left from '../include/Left';
 import RightTop from '../include/right/RightTop';
 import RightBottom from '../include/right/RightBottom';
+import ChatItem from '../include/guest/ChatItem';
 
 // 필요한 코드를 추가하세요
 const Home = () => {
@@ -59,6 +60,7 @@ const Home = () => {
             <section id="center_card" className="center_card  h-screen">
               <HomeImage />
               <HomeGuest />
+              {/* <ChatItem /> */}
 
             </section>
 
