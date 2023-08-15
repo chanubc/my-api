@@ -7,6 +7,8 @@ import LogoWrite from "../img/jam_write.svg";
 import LogoHome from "../img/mdi_farm.svg";
 // import generateImageItems from '../function/data.js'; // data.js 파일의 함수를 가져옴
 import Loading from '../effect/Loading';
+import MyCarousel from './home/Carousel';
+import Carousel from 'antd';
 import LoadingText from '../effect/LoadingText';
 import axios from 'axios'; // Import Axios
 
@@ -80,16 +82,19 @@ const HomeImage = () => {
                     <img className='ml-auto rounded transition duration-150 ease-in-out hover:bg-[#D3DEDA] focus:outline-none focus:ring-0 active:text-primary-700' src={LogoWrite} alt='logo' />
                 </div>
 
-                <div className="image-container">
-                    <img id="image_main" className="image h-[300px] rounded-md mb-3 bg-gray-800"
-                        src={ImgEx} alt="Sunset in the mountains" />
+                <div className="image-container mb-3 rounded-md">
+                    {/* 메인 이미지 */}
+                    <MyCarousel />
+
+                    {/* <img id="image_main" className="image h-[300px] rounded-md mb-3 bg-gray-800"
+                        src={ImgEx} alt="Sunset in the mountains" /> */}
                 </div>
                 {/* <!-- Four columns --> */}
                 <ul className="flex h-fit">
                     {data.length !== 0 ? (
+                        // 아이템 붙이는 코드
                         generateImageItems(data)
                     ) : (
-
                         <Loading />
                     )}
                 </ul>
@@ -109,6 +114,7 @@ const HomeImage = () => {
         ));
 
     };
+
 }
 
 export default HomeImage;
