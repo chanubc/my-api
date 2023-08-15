@@ -1,48 +1,45 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Carousel } from 'antd';
 import '../../css/home.css';
 
-const contentStyle = {
-    height: '300px',
-    color: '#fff',
-    lineHeight: '300px',
-    textAlign: 'center',
-    background: '#364d79',
-    rounded: '10px',
-    
-};
-
 const MyCarousel = () => {
 
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+        const delay = setTimeout(() => {
+            fetchData();
+        });
+
+        return () => clearTimeout(delay);
+    }, [data])
+
+    const fetchData = async () => {
+        try {
+            const response = await fetch("https://reqres.in/api/users?page=1")
+
+            if (!response.ok) {
+                throw new Error("응답 없음");
+            }
+
+            const jsonData = await response.json();
+            setData(jsonData.data.slice(0, 4));
+            console.log(data);
+
+        } catch (error) {
+            console.error("Fetch 도중 오류 발생");
+        }
+    }
+
     return (
-        <>
-            <Carousel autoplay className="rounded-xl"> 
-                <div>
-                    <img className='image h-[300px] rounded-md  bg-gray-800' src='' alt='home_image'/>
+        <Carousel autoplay dots={true} pauseOnHover={true}>
+            {data.map((item,index) => (
+                <div key={item.id}>
+                    <img className='image h-[300px] rounded-md bg-gray-800'
+                        src={item.avatar} alt={`home_image_${index}`} />
                 </div>
-                <div>
-                    <img className='image h-[300px] rounded-md  bg-gray-800' src='' alt='home_image'/>
-                </div>
-                <div>
-                    <img className='image h-[300px] rounded-md  bg-gray-800' src='' alt='home_image'/>
-                </div>
-                <div>
-                    <img className='image h-[300px] rounded-md  bg-gray-800' src='' alt='home_image'/>
-                </div>
-                
-
-                {/* <div>
-                    <h3 style={contentStyle}>2</h3>
-                </div>
-                <div>
-                    <h3 style={contentStyle}>3</h3>
-                </div>
-                <div>
-                    <h3 style={contentStyle}>4</h3>
-                </div> */}
-            </Carousel >
-
-        </>
+            ))}
+        </Carousel>
     )
 };
 

@@ -8,18 +8,10 @@ import LogoHome from "../img/mdi_farm.svg";
 // import generateImageItems from '../function/data.js'; // data.js 파일의 함수를 가져옴
 import Loading from '../effect/Loading';
 import MyCarousel from './home/Carousel';
-import CarouselDefault from '../function/CarouselDefault';
 import Carousel from 'antd';
 import LoadingText from '../effect/LoadingText';
 import axios from 'axios'; // Import Axios
 
-const contentStyle = {
-    height: '160px',
-    color: '#fff',
-    lineHeight: '160px',
-    textAlign: 'center',
-    background: '#364d79',
-};
 
 const HomeImage = () => {
 
@@ -92,27 +84,7 @@ const HomeImage = () => {
 
                 <div className="image-container mb-3 rounded-md">
                     {/* 메인 이미지 */}
-                    {/* <MyCarousel /> */}
-                    <CarouselDefault />
-
-
-
-
-
-                    {/* <Carousel autoplay>
-                        <div>
-                            <h3 style={contentStyle}>1</h3>
-                        </div>
-                        <div>
-                            <h3 style={contentStyle}>2</h3>
-                        </div>
-                        <div>
-                            <h3 style={contentStyle}>3</h3>
-                        </div>
-                        <div>
-                            <h3 style={contentStyle}>4</h3>
-                        </div>
-                    </Carousel > */}
+                    <MyCarousel />
 
                     {/* <img id="image_main" className="image h-[300px] rounded-md mb-3 bg-gray-800"
                         src={ImgEx} alt="Sunset in the mountains" /> */}
@@ -122,9 +94,7 @@ const HomeImage = () => {
                     {data.length !== 0 ? (
                         // 아이템 붙이는 코드
                         generateImageItems(data)
-
                     ) : (
-
                         <Loading />
                     )}
                 </ul>
