@@ -9,7 +9,7 @@ const MyCarousel = () => {
     useEffect(() => {
         const delay = setTimeout(() => {
             fetchData();
-        });
+        }, 1000);
 
         return () => clearTimeout(delay);
     }, [data])
@@ -33,7 +33,7 @@ const MyCarousel = () => {
 
     return (
         <Carousel autoplay dots={true} pauseOnHover={true}>
-            {data.map((item,index) => (
+            {data.map((item, index) => (
                 <div key={item.id}>
                     <img className='image h-[300px] rounded-md bg-gray-800'
                         src={item.avatar} alt={`home_image_${index}`} />
