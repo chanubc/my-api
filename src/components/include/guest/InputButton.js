@@ -63,7 +63,7 @@ const InputButton = () => {
                 <article className="relative w-[85%] " data-te-input-wrapper-init>
                     <textarea
                         id="exampleFormControlTextarea1"
-                        className="peer focus:outline-[#29A99A] focus:border-[#29A99A] block border-[#29A99A] border h-[60px] w-full rounded-xl bg-transparent px-3 py-[0.32rem] leading-[1.6] focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+                        className="peer focus:outline-[#29A99A] focus:border-[#29A99A] block border-[#29A99A] border h-[60px] w-full rounded-xl bg-white px-3 py-[0.32rem] leading-[1.6] focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
                         rows="4"
                         value={inputTest}
                         onChange={handleTextareaChange}
