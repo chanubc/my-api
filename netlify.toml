@@ -1,0 +1,5 @@
+[[redirects]]
+  from = "/proxy/*"
+  to = "https://farmer-in-nongtori.netlify.app/:splat"
+  status = 200
+  force = true
