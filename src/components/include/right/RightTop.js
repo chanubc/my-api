@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
 import NeighborList from './NeighborList';
 import ButtonRight from './ButtonRight';
+import Button from './ButtonRight';
 
 const RightTop = () => {
     return (
