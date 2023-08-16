@@ -6,6 +6,7 @@ import LogoWrite from "../img/jam_write.svg";
 import LoadingText from '../effect/LoadingText';
 import { Skeleton } from 'antd';
 import axios from 'axios'; // Import Axios
+import { ApiSeverUrl } from '../../api/DefaultSetup';
 
 
 
@@ -23,9 +24,10 @@ const Left = () => {
         return () => clearTimeout(delay);
     }, [])
 
+
     const fetchData = async () => {
         try {
-            const response = await fetch("https://reqres.in/api/users?page=1",{
+            const response = await axios.get(ApiSeverUrl+"/farmer/1/?format=json",{
                 headers: {
                     "Access-Control-Allow-Origin": "*",
                     "content-type": "application/json",
