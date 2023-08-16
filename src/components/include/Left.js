@@ -24,10 +24,12 @@ const Left = () => {
         return () => clearTimeout(delay);
     }, [])
 
+    const PROXY = window.location.hostname === 'localhost' ? '' : '/proxy';
+
 
     const fetchData = async () => {
         try {
-            const response = await axios.get(ApiSeverUrl+"/farmer/1/?format=json",{
+            const response = await axios.get({PROXY}+"/farmer/1/?format=json",{
                 headers: {
                     "Access-Control-Allow-Origin": "*",
                     "content-type": "application/json",
