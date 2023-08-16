@@ -12,7 +12,7 @@ const MyCarousel = () => {
         }, 1000);
 
         return () => clearTimeout(delay);
-    }, [data])
+    }, [])
 
     const fetchData = async () => {
         try {
@@ -24,7 +24,7 @@ const MyCarousel = () => {
 
             const jsonData = await response.json();
             setData(jsonData.data.slice(0, 4));
-            console.log(data);
+            // console.log(data);
 
         } catch (error) {
             console.error("Fetch 도중 오류 발생");
@@ -32,7 +32,7 @@ const MyCarousel = () => {
     }
 
     return (
-        <Carousel autoplay dots={true} pauseOnHover={true}>
+        <Carousel  dots={true} pauseOnHover={true}>
             {data.map((item, index) => (
                 <div key={item.id}>
                     <img className='image h-[300px] rounded-md bg-gray-800'
