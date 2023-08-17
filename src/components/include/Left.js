@@ -20,17 +20,25 @@ const Left = ({ userId }) => {
 
     useEffect(() => {
 
+        
+
         if (userId === null) {
             userId = 1
         }
 
-
         fetchData(userId);
-
 
 
         console.log(userId + " in left")
     }, [userId]); // userId가 변경될 때마다 fetchData 실행
+
+    // useEffect(() => {
+  //   const delay = setTimeout(() => {
+  //     fetchData();
+  //   }, 3000);
+
+  //   return () => clearTimeout(delay);
+  // }, [])
 
 
 
@@ -93,7 +101,7 @@ const Left = ({ userId }) => {
                 {/* <!-- 내부카드 --> */}
                 <section className="w-full rounded-[20px] h-[85%] overflow-hidden shadow-lg bg-[#FAFAFA]">
 
-                    {data !== null ? (
+                    {data != null ? (
                         <>
                             {/* 상단 부 이미지 */}
                             <section className="relative">

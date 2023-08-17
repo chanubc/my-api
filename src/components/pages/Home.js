@@ -16,20 +16,20 @@ const Home = () => {
   const [data, setData] = useState([]);
 
 
-  const [selectedUserId, setSelectedUserId] = useState(null);
+  const [selectedUserId, setSelectedUserId] = useState(1);
 
   const handleUserSelect = (userId) => {
       setSelectedUserId(userId); // 선택된 사용자 정보를 업데이트
   }
 
 
-  useEffect(() => {
-    const delay = setTimeout(() => {
-      fetchData();
-    }, 3000);
+  // useEffect(() => {
+  //   const delay = setTimeout(() => {
+  //     fetchData();
+  //   }, 3000);
 
-    return () => clearTimeout(delay);
-  }, [])
+  //   return () => clearTimeout(delay);
+  // }, [])
 
 
 
@@ -68,8 +68,8 @@ const Home = () => {
 
             {/* 가운데 */}
             <section id="center_card" className="center_card  h-screen">
-              <HomeImage  />
-              <HomeGuest />
+              <HomeImage userId={selectedUserId}  />
+              <HomeGuest  />
               {/* <ChatItem /> */}
 
             </section>
