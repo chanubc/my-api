@@ -15,20 +15,48 @@ import { ApiSeverUrl } from '../../api/DefaultSetup';
 
 
 
-const HomeImage = () => {
+const HomeImage = ({ userId }) => {
+
+    const [data, setData] = useState(null);
 
 
-    const [data, setData] = useState([]);
+    // useEffect(() => {
+    //     const delay = setTimeout(() => {
+    //       fetchData();
+    //     }, 3000);
+
+    //     return () => clearTimeout(delay);
+    //   }, [])
+
+    //   const fetchData = async () => {
+    //     try {
+    //       const response = await fetch("https://reqres.in/api/users?page=1")
+    //       if (!response.ok) {
+    //         throw new Error("응답 없음");
+    //       }
+
+    //       const jsonData = await response.json();
+    //       setData(jsonData.data);
+    //       // console.log(data);
+
+    //     } catch (error) {
+    //       console.error("Fetch 도중 오류 발생");
+    //     }
+    //   }
 
     useEffect(() => {
-        fetchData();
-    }, [])
-
-    const PROXY = window.location.hostname === 'localhost' ? '' : '/proxy';
+        const delay = setTimeout(() => {
+            fetchData(userId);
+        }, 3000)
+        return () => clearTimeout(delay);
+    }, [userId])
 
 
     const fetchData = async () => {
-        return await axios.get(ApiSeverUrl + "/farmer/1/?format=json", {
+        await new Promise(resolve => setTimeout(resolve, 3000));
+
+        // return await axios.get(ApiSeverUrl + "/farmer/${setindex+1}/farm/?format=json", {
+        return await axios.get(`${ApiSeverUrl}/farmer/${userId}/farm/?format=json`, {
             headers: {
                 "Access-Control-Allow-Origin": "*",
                 "content-type": "application/json",
@@ -86,17 +114,17 @@ const HomeImage = () => {
 
                 <div className="image-container mb-3 rounded-md">
                     {/* 메인 이미지 */}
-                    <MyCarousel />
+                    <MyCarousel userId={userId} />
 
                     {/* <img id="image_main" className="image h-[300px] rounded-md mb-3 bg-gray-800"
                         src={ImgEx} alt="Sunset in the mountains" /> */}
                 </div>
                 {/* <!-- Four columns --> */}
                 <ul className="flex h-fit">
-                    {data !== null ?  (
+                    {data !== null ? (
                         // 아이템 붙이는 코드
-                        // generateImageItems(data)
-                        <></>
+                        generateImageItems(data)
+
                     ) : (
                         <Loading />
                     )}
@@ -108,15 +136,15 @@ const HomeImage = () => {
 
 
     // item 붙이는 코드
-    // function generateImageItems(data) {
-    //     return data.Farm.Farm_pic.map((item, index) => (
-    //         <li key={index} className={`w-1/4 bg-gray-500 ${index !== 3 ? 'mr-3' : ''} rounded-[5px]`}>
-    //             <img className="image-item" src={item.Farm_pics} alt="User Avatar" />
-    //             {/* <div className='teest'>{agent.title}</div> */}
-    //         </li>
-    //     ));
+    function generateImageItems(data) {
+        return data.slice(0, 4).map((item, index) => (
+            <li key={index} className={`w-1/4 bg-gray-500 ${index !== 3 ? 'mr-3' : ''} rounded-[5px]`}>
+                <img className="image-item" src={item.Farm_pics} alt="User Avatar" />
+                {/* <div className='teest'>{agent.title}</div> */}
+            </li>
+        ));
 
-    // };
+    };
 
 }
 

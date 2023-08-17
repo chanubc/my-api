@@ -1,42 +1,42 @@
 import React, { useEffect, useState } from 'react';
 import { Carousel } from 'antd';
 import '../../css/home.css';
+import axios from 'axios';
+import { ApiSeverUrl } from '../../../api/DefaultSetup';
 
-const MyCarousel = () => {
+const MyCarousel = ({ userId }) => {
 
     const [data, setData] = useState([]);
 
     useEffect(() => {
-        const delay = setTimeout(() => {
-            fetchData();
-        }, 1000);
-
-        return () => clearTimeout(delay);
-    }, [])
+        fetchData(userId);
+    }, [userId])
 
     const fetchData = async () => {
-        try {
-            const response = await fetch("https://reqres.in/api/users?page=1")
-
-            if (!response.ok) {
-                throw new Error("응답 없음");
+        // return await axios.get(ApiSeverUrl + "/farmer/${setindex+1}/farm/?format=json", {
+        return await axios.get(`${ApiSeverUrl}/farmer/${userId}/farm/?format=json`, {
+            headers: {
+                "Access-Control-Allow-Origin": "*",
+                "content-type": "application/json",
+                "ngrok-skip-browser-warning": "true",
             }
 
-            const jsonData = await response.json();
-            setData(jsonData.data.slice(0, 4));
-            // console.log(data);
-
-        } catch (error) {
-            console.error("Fetch 도중 오류 발생");
-        }
+        }).then((response) => {
+            console.log(response);
+            setData(response.data);
+            console.log(response.data.Farmer_back_pic.substr(1))
+            console.log(decodeURIComponent(response.data.Farmer_back_pic.substr(1)))
+        }).catch((error) => {
+            console.log(error);
+        });
     }
 
     return (
-        <Carousel  dots={true} pauseOnHover={true}>
+        <Carousel dots={true} pauseOnHover={true}>
             {data.map((item, index) => (
-                <div key={item.id}>
+                <div key={item.Farm_id}>
                     <img className='image h-[300px] rounded-md bg-gray-800'
-                        src={item.avatar} alt={`home_image_${index}`} />
+                        src={item.Farm_pics} alt={`home_image_${index}`} />
                 </div>
             ))}
         </Carousel>

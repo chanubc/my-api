@@ -1,70 +1,58 @@
 import React, { useEffect, useState } from 'react';
-import '../../css/home.css';
 import LoadingText from '../../effect/LoadingText';
+import NeighborApi from '../../../api/NeighborApi';
 
-
-
-const NeighborList = () => {
-
+const NeighborList = ( props ) => {
     const [data, setData] = useState([]);
+    const [selectedUser, setSelectedUser] = useState(1);
 
     useEffect(() => {
-        const delay = setTimeout(() => {
-            fetchData();
-        }, 3000);
+        if (selectedUser) { // selectedUser가 null이 아닌 경우에만 fetchData 호출
+            fetchData(selectedUser);
+        }
+    }, [selectedUser]);
 
-        return () => clearTimeout(delay);
-    }, [])
-
-    const fetchData = async () => {
+    const fetchData = async (userId) => {
         try {
-            const response = await fetch("https://reqres.in/api/users?page=1")
-            if (!response.ok) {
-                throw new Error("응답 없음");
-            }
-
-            const jsonData = await response.json();
-            setData(jsonData.data);
-            console.log(data);
+            const response = await NeighborApi.getNeighborList(userId);
+            setData(response.data.neighbors);
+            console.log(userId+" userId in neighbor");
 
         } catch (error) {
             console.error("Fetch 도중 오류 발생");
         }
-    }
+    };
 
+    const handleUserClick = (userId) => { // userId를 매개변수로 받음
+        props.onUserSelect(userId)
+        setSelectedUser(userId); // 사용자 아이디를 선택된 사용자로 업데이트
+        console.log(userId+" click");
+        fetchData(userId); // 사용자가 클릭되면 해당 사용자의 데이터를 가져옴
+    };
 
     return (
         <>
             {data.length !== 0 ? (
                 <>
-                    {data.slice(0, 3).map((user, index) => (
-                        <>
-                            <div key={index} className='block overflow-hidden' >
-                                <section className="flex items-center py-2 hover:bg-[#D3DEDA] hover:rounded-[10px] duration-300 ease-in-out">
-
-                                    <img className="w-14 h-14 rounded-full mr-2 bg-black" src={user.avatar} alt="Avatar of Jonathan Reinink" />
-                                    <div className="text-base font-semibold align-middle items-center justify-center">
-                                        <p className="text-gray-900">{user.first_name}</p>
-                                        <p className="text-[#8C8C8C]">{user.email}</p>
+                    {data.map((user, id) => (
+                        <div key={id} className='block overflow-hidden' onClick={() => handleUserClick(user.id)}>
+                            <section className={`flex items-center py-2 hover:bg-[#D3DEDA] hover:rounded-[10px] duration-300 ease-in-out`}>
+                                <div className='relative flex'>
+                                    <img className="object-cover w-14 h-14 rounded-full overflow-hidden mr-3" src={user.Farmer_pic} alt="Avatar" />
+                                    <div className="text-base font-semibold align-middle items-center justify-center overflow-hidden">
+                                        <p className="text-gray-900">{user.Farmer_name}</p>
+                                        <p className="text-[#8C8C8C] truncate">{user.Farmer_intro}</p>
                                     </div>
-
-                                </section>
-                            </div>
-                        </>
+                                </div>
+                            </section>
+                        </div>
                     ))}
                 </>
-
             ) : (
                 <LoadingText />
             )}
-
         </>
     )
 }
-export default NeighborList
 
-// {/* <img class="w-14 h-14 rounded-full mr-2 bg-black" src={data[0].avatar} alt="Avatar of Jonathan Reinink" />
-// <div class="text-base font-semibold align-middle items-center justify-center">
-// <p class="text-gray-900">닉넴1</p>
-// <p class="text-[#8C8C8C]">소같이 일하자</p>
-// </div> */}
+export default NeighborList;

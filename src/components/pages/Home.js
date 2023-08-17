@@ -15,13 +15,23 @@ const Home = () => {
 
   const [data, setData] = useState([]);
 
-  useEffect(() => {
-    const delay = setTimeout(() => {
-      fetchData();
-    }, 3000);
 
-    return () => clearTimeout(delay);
-  }, [])
+  const [selectedUserId, setSelectedUserId] = useState(1);
+
+  const handleUserSelect = (userId) => {
+      setSelectedUserId(userId); // 선택된 사용자 정보를 업데이트
+  }
+
+
+  // useEffect(() => {
+  //   const delay = setTimeout(() => {
+  //     fetchData();
+  //   }, 3000);
+
+  //   return () => clearTimeout(delay);
+  // }, [])
+
+
 
   const fetchData = async () => {
     try {
@@ -39,13 +49,13 @@ const Home = () => {
     }
   }
 
-  useEffect(() => {
-    console.log("데이터: " + data);
-  }, [data]);
+  // useEffect(() => {
+  //   console.log("데이터: " + data);
+  // }, [data]);
 
   return (
     <>
-      <Navbar/>
+      <Navbar />
 
       <div className="wrapping">
         {/* navbar제외 영역 */}
@@ -54,19 +64,19 @@ const Home = () => {
           <main className="wrapper flex mx-auto">
 
             {/* 좌측 */}
-            <Left />
+            <Left userId={selectedUserId}/>
 
             {/* 가운데 */}
             <section id="center_card" className="center_card  h-screen">
-              <HomeImage />
-              <HomeGuest />
+              <HomeImage userId={selectedUserId}  />
+              <HomeGuest  />
               {/* <ChatItem /> */}
 
             </section>
 
             {/* 우측 */}
             <aside id="right_card" className="w-[26%]  h-full ml-4">
-              <RightTop />
+              <RightTop onUserSelect={handleUserSelect} />
               <RightBottom />
             </aside>
 
