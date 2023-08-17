@@ -7,8 +7,12 @@ import LogoWrite from "../include/img/jam_write.svg";
 import LogoHome from "../include/img/mdi_farm.svg";
 // import generateImageItems from '../function/data.js'; // data.js 파일의 함수를 가져옴
 import Loading from '../effect/Loading';
+import MyCarousel from './home/Carousel';
+import Carousel from 'antd';
 import LoadingText from '../effect/LoadingText';
 import axios from 'axios'; // Import Axios
+import { ApiSeverUrl } from '../../api/DefaultSetup';
+
 
 
 const HomeImage = () => {
@@ -17,28 +21,28 @@ const HomeImage = () => {
     const [data, setData] = useState([]);
 
     useEffect(() => {
-        const delay = setTimeout(() => {
-            fetchData();
-        }, 3000);
-
-        return () => clearTimeout(delay);
+        fetchData();
     }, [])
 
-    const fetchData = async () => {
-        try {
-            const response = await fetch("https://reqres.in/api/users?page=1")
+    const PROXY = window.location.hostname === 'localhost' ? '' : '/proxy';
 
-            if (!response.ok) {
-                throw new Error("응답 없음");
+
+    const fetchData = async () => {
+        return await axios.get(ApiSeverUrl + "/farmer/1/?format=json", {
+            headers: {
+                "Access-Control-Allow-Origin": "*",
+                "content-type": "application/json",
+                "ngrok-skip-browser-warning": "true",
             }
 
-            const jsonData = await response.json();
-            setData(jsonData.data);
-            console.log(data);
-
-        } catch (error) {
-            console.error("Fetch 도중 오류 발생");
-        }
+        }).then((response) => {
+            console.log(response);
+            setData(response.data);
+            console.log(response.data.Farmer_back_pic.substr(1))
+            console.log(decodeURIComponent(response.data.Farmer_back_pic.substr(1)))
+        }).catch((error) => {
+            console.log(error);
+        });
     }
 
     // const fetchData = async () => {
@@ -80,29 +84,20 @@ const HomeImage = () => {
                     <img className='ml-auto rounded transition duration-150 ease-in-out hover:bg-[#D3DEDA] focus:outline-none focus:ring-0 active:text-primary-700' src={LogoWrite} alt='logo' />
                 </div>
 
-                <div className="image-container">
-                    <img id="image_main" className="image h-[300px] rounded-md mb-3 bg-gray-800"
-                        src={ImgEx} alt="Sunset in the mountains" />
+                <div className="image-container mb-3 rounded-md">
+                    {/* 메인 이미지 */}
+                    <MyCarousel />
+
+                    {/* <img id="image_main" className="image h-[300px] rounded-md mb-3 bg-gray-800"
+                        src={ImgEx} alt="Sunset in the mountains" /> */}
                 </div>
                 {/* <!-- Four columns --> */}
                 <ul className="flex h-fit">
-                    
-                    {data.length !== 0 ? (
-                        
-                        
+                    {data !== null ?  (
+                        // 아이템 붙이는 코드
                         // generateImageItems(data)
-                        data.slice(0, 4).map((agent, index) => (
-                            <>
-                            <li key={index} className={`w-1/4 bg-gray-500 ${index !== 3 ? 'mr-3' : ''} rounded-[5px]`}>
-                                <img className="image-item" src={agent.avatar} alt="User Avatar" />
-                                {/* <div className='teest'>{agent.title}</div> */}
-                            </li>
-                            </>
-                        ))
-
-                
+                        <></>
                     ) : (
-
                         <Loading />
                     )};
 
@@ -114,15 +109,16 @@ const HomeImage = () => {
 
 
     // item 붙이는 코드
-    function generateImageItems(data) {
-        return data.slice(0, 4).map((agent, index) => (
-            <li key={index} className={`w-1/4 bg-gray-500 ${index !== 3 ? 'mr-3' : ''} rounded-[5px]`}>
-                <img className="image-item" src={agent.avatar} alt="User Avatar" />
-                {/* <div className='teest'>{agent.title}</div> */}
-            </li>
-        ));
+    // function generateImageItems(data) {
+    //     return data.Farm.Farm_pic.map((item, index) => (
+    //         <li key={index} className={`w-1/4 bg-gray-500 ${index !== 3 ? 'mr-3' : ''} rounded-[5px]`}>
+    //             <img className="image-item" src={item.Farm_pics} alt="User Avatar" />
+    //             {/* <div className='teest'>{agent.title}</div> */}
+    //         </li>
+    //     ));
 
-    };
+    // };
+
 }
 
 export default HomeImage;

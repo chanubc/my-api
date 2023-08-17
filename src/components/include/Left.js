@@ -6,6 +6,7 @@ import LogoWrite from "../include/img/jam_write.svg";
 import LoadingText from '../effect/LoadingText';
 import { Skeleton } from 'antd';
 import axios from 'axios'; // Import Axios
+import { ApiSeverUrl } from '../../api/DefaultSetup';
 
 
 
@@ -13,67 +14,63 @@ import '../css/home.css'
 import Loading from '../effect/Loading';
 
 const Left = () => {
-    const [data, setData] = useState([]);
+    const [data, setData] = useState(null);
 
     useEffect(() => {
-        const delay = setTimeout(() => {
-            fetchData();
-        }, 3000);
-
-        return () => clearTimeout(delay);
+        fetchData();
     }, [])
 
+    const PROXY = window.location.hostname === 'localhost' ? '' : '/proxy';
+
+
     const fetchData = async () => {
-        try {
-            const response = await fetch("https://reqres.in/api/users?page=1", {
-                headers: {
-                    "Access-Control-Allow-Origin": "*",
-                    "content-type": "application/json",
-                }
-
-            });
-
-            if (!response.ok) {
-                throw new Error("응답 없음");
+        return await axios.get(ApiSeverUrl + "/farmer/1/?format=json", {
+            headers: {
+                "Access-Control-Allow-Origin": "*",
+                "content-type": "application/json",
+                "ngrok-skip-browser-warning": "true",
             }
 
-            const jsonData = await response.json();
-            setData(jsonData.data);
-            console.log(data);
+        }).then((response) => {
+            console.log(response);
+            setData(response.data);
+            console.log(response.data.Farmer_back_pic.substr(1))
+            console.log(decodeURIComponent(response.data.Farmer_back_pic.substr(1)))
+        }).catch((error) => {
+            console.log(error);
+        });
+    }
 
-        } catch (error) {
-            console.error("Fetch 도중 오류 발생");
+
+    /*
+    {
+        "Farmer_pic": "/https%3A/drive.google.com/uc%3Fid%3D19dqkjHUzipwmrPNezLhNc535AtmVnq2U",
+        "Farmer_back_pic": "/https%3A/drive.google.com/uc%3Fid%3D1_Xf3vmANSTDm5pcq709BYyyom1hegLUv",
+        "Farmer_name": "NohSeonJae",
+        "Farmer_tel": "01012345678",
+        "Farmer_intro": "반갑습니다",
+        "Farm": {
+            "master": 1,
+            "Farm_pic": [
+                {
+                    "Farm_pics": "/https%3A/drive.google.com/uc%3Fid%3D1IxQy7BEMB_J-VHXgHMogkvIokD4O1iWe"
+                },
+                {
+                    "Farm_pics": "/https%3A/drive.google.com/uc%3Fid%3D1g0ZTlEgZm7P5XXfeBYfWS9D4YgolCBBr"
+                },
+                {
+                    "Farm_pics": "/https%3A/drive.google.com/uc%3Fid%3D1qfd6nzcCp566NKtkt9Cs4vvPIhEmCMIr"
+                },
+                {
+                    "Farm_pics": "/https%3A/drive.google.com/uc%3Fid%3D1lON2uZOjynjclfLXlRi56Hz_GtyPpZiR"
+                },
+                {
+                    "Farm_pics": "/https%3A/drive.google.com/uc%3Fid%3D1qkV9T_O99gyA-YowdO2Rs78bVVpzw6eg"
+                }
+            ]
         }
     }
-    // const baseUrl = 'http://192.168.61.6:8000/farmin/posts/'
-    // const proxyUrl = 'https://cors-proxy.org/api/'
-    // const fetchData = async () => {
-    //     try {
-    //         const response = await axios.get('http://192.168.61.6:8000/farmin/posts/', {
-    //             headers: {
-    //                 "Access-Control-Allow-Origin": "*",
-    //                 "content-type": "application/json",
-    //                 'ngrok-skip-browser-warning': '69420',
-    //                 'cors-proxy-url': { baseUrl }
-    //             }
-    //         });
-
-    //         if (!response.ok) {
-    //             throw new Error("응답 없음");
-    //         }
-
-    //         const jsonData = await response.json();
-    //         setData(jsonData.data);
-    //         console.log(data);
-    //     } catch (error) {
-    //         console.error("Fetch 도중 오류 발생");
-    //     }
-    // }
-
-    // useEffect(() => {
-    //     console.log("데이터: " + data);
-    // }, [data]);
-
+    */
 
     return (
         <>
@@ -81,15 +78,15 @@ const Left = () => {
                 {/* <!-- 내부카드 --> */}
                 <section className="w-full rounded-[20px] h-[85%] overflow-hidden shadow-lg bg-[#FAFAFA]">
 
-                    {data.length !== 0 ? (
+                    {data !== null ? (
                         <>
                             {/* 상단 부 이미지 */}
                             <section className="relative">
                                 <div className="h-36 bg-neutral-700 rounded-t-[20px]">
-                                    <img className="w-full h-full" src={ImgTop} alt="Sunset in the mountains" />
+                                    <img className="image w-full h-full" src={decodeURIComponent(data.Farmer_back_pic.substr(1))} alt="Sunset in the mountains" />
                                 </div>
                                 <div id="custom-ha" className='w-fit h-fit inline-block'>
-                                    <img className="bg-white custom-ha w-[7.5rem] h-[7.5rem] rounded-[50%] ring-4 ring-gray-50" src={ImgTop} alt="Bordered avatar" />
+                                    <img className="image bg-white custom-ha w-[7.5rem] h-[7.5rem] rounded-[50%] ring-4 ring-gray-50" src={decodeURIComponent(data.Farmer_pic.substr(1))} alt="Bordered avatar" />
                                 </div>
                             </section>
 
@@ -99,12 +96,12 @@ const Left = () => {
                                     <img className='w-fit h-fit' src={LogoProfile} alt='logo' />
                                     {/* <p className="font-black text-xl ml-1">프로필</p> */}
                                     <p className="font-bold text-xl ml-1">
-                                        {data[0].first_name} {data[0].last_name}
+                                        {data.Farmer_name}
                                     </p>
 
                                 </div>
                                 <p className="font-semibold text-xl text-[#8F8F8F] mt-1">
-                                    010-1234-5678
+                                    {data.Farmer_tel}
                                 </p>
                             </article>
 
@@ -116,9 +113,9 @@ const Left = () => {
                                         src={LogoWrite} alt='logo' />
                                 </div>
                                 <p className="text-[#666666] text-base font-medium">
-                                    맛있고 건강한 채소를 키워요! 오늘도 논으로 밭으로 향한다</p>
-                                <p className="text-[#666666] text-base font-medium mt-3">
-                                    반갑습니다 저는 고령에서 벼와 콩을 재배하고 있습니다.</p>
+                                    {data.Farmer_intro}</p>
+                                {/* <p className="text-[#666666] text-base font-medium mt-3">
+                                    반갑습니다 저는 고령에서 벼와 콩을 재배하고 있습니다.</p> */}
                             </article>
                         </>
                     ) : (

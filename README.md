@@ -1,6 +1,5 @@
 # Netilfy   
-[![Netlify Status](https://api.netlify.com/api/v1/badges/586e300d-795b-4045-bc70-e85c6c7d99a8/deploy-status)](https://app.netlify.com/sites/farmer-in-nongtori/deploys)   
-
+[![Netlify Status](https://api.netlify.com/api/v1/badges/586e300d-795b-4045-bc70-e85c6c7d99a8/deploy-status)](https://app.netlify.com/sites/farmer-in-nongtori/deploys)
 # Adress   
 https://farmer-in-nongtori.netlify.app/
 
