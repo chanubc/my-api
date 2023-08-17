@@ -25,17 +25,17 @@ const Sales = () => {
           <main class="wrapper flex mx-auto">
 
             {/* 좌측 */}
-            <Left />
+            <Left userId={selectedUserId}/>
 
             {/* 가운데 */}
             <section id="center_card" class="center_card  h-screen">
-              <SalesProduct />
+              <SalesProduct userId={selectedUserId} />
             </section>
 
             {/* 우측 */}
             <aside id="right_card" class="w-[26%]  h-full ml-4">
-              <RightTop />
-              <RightBottom />
+              <RightTop onUserSelect={handleUserSelect}/>
+              <RightBottom userId={selectedUserId} />
             </aside>
 
           </main>

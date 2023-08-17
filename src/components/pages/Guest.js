@@ -38,7 +38,7 @@ const Guest = () => {
             {/* 우측 */}
             <aside id="right_card" className="w-[26%]  h-full ml-4">
               <RightTop onUserSelect={handleUserSelect}/>
-              <RightBottom onUserSelect={handleUserSelect} />
+              <RightBottom userId={selectedUserId} />
             </aside>
 
           </main>
