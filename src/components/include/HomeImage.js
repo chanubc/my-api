@@ -45,15 +45,13 @@ const HomeImage = ({ userId }) => {
     //   }
 
     useEffect(() => {
-        const delay = setTimeout(() => {
+        if (userId !== undefined || userId !== null) {
             fetchData(userId);
-        }, 3000)
-        return () => clearTimeout(delay);
+        }
     }, [userId])
 
 
     const fetchData = async () => {
-        await new Promise(resolve => setTimeout(resolve, 3000));
 
         // return await axios.get(ApiSeverUrl + "/farmer/${setindex+1}/farm/?format=json", {
         return await axios.get(`${ApiSeverUrl}/farmer/${userId}/farm/?format=json`, {

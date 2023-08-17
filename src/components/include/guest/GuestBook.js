@@ -19,6 +19,7 @@ const GuestBook = ({ userId }) => {
         try {
             PostData()
             setButtonClick(ButtonClick+1)
+            setTextareaValue("")
 
         } catch (error) {
             console.error("POST 요청 중 오류 발생", error);

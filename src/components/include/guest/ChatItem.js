@@ -5,6 +5,7 @@ import IconDelete from '../../img/Icon_trash.svg'
 import LoadingText from '../../effect/LoadingText';
 import axios from 'axios';
 import { ApiSeverUrl } from '../../../api/DefaultSetup';
+import LoadingGuest from './LoadingGuest';
 
 const ChatItem = ({ userId, ButtonClick}) => {
 
@@ -30,6 +31,8 @@ const ChatItem = ({ userId, ButtonClick}) => {
     const fetchData = async (userId) => {
         // await new Promise(resolve => setTimeout(resolve, 3000));
 
+
+        <LoadingGuest/>
         // return await axios.get(ApiSeverUrl + "/farmer/${setindex+1}/farm/?format=json", {
         return axios.get(`${ApiSeverUrl}/farmer/${userId}/guestbook/?format=json`, {
             headers: {
