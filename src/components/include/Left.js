@@ -20,7 +20,7 @@ const Left = ({ userId }) => {
 
     useEffect(() => {
 
-        
+
 
         if (userId === null) {
             userId = 1
@@ -33,12 +33,12 @@ const Left = ({ userId }) => {
     }, [userId]); // userId가 변경될 때마다 fetchData 실행
 
     // useEffect(() => {
-  //   const delay = setTimeout(() => {
-  //     fetchData();
-  //   }, 3000);
+    //   const delay = setTimeout(() => {
+    //     fetchData();
+    //   }, 3000);
 
-  //   return () => clearTimeout(delay);
-  // }, [])
+    //   return () => clearTimeout(delay);
+    // }, [])
 
 
     const fetchData = async () => {
@@ -95,15 +95,15 @@ const Left = ({ userId }) => {
                             </article>
 
                             {/* 하단 부 글 */}
-                            <article className="px-6 py-2">
+                            <article className="px-6 py-2 ">
                                 <div className='flex items-center justify-center mb-3'>
                                     <p className="font-bold text-lg text-[#00A884]">한줄소개</p>
                                     <img className='ml-auto rounded transition duration-150 ease-in-out hover:bg-[#D3DEDA] focus:outline-none focus:ring-0 active:text-primary-700'
                                         src={LogoWrite} alt='logo' />
                                 </div>
-                                <p className="text-[#666666] text-base font-medium overflow-hidden text-ellipsis ">
-                                    {data.Farmer_intro}
-                                </p>
+                                <div className="text-[#666666] text-base font-medium overflow-hidden">
+                                    <p className="text-ellipsis">{data.Farmer_intro}</p>
+                                </div>
                                 {/* <p className="text-[#666666] text-base font-medium mt-3">
                                     반갑습니다 저는 고령에서 벼와 콩을 재배하고 있습니다.</p> */}
                             </article>
