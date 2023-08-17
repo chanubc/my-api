@@ -69,9 +69,6 @@ const ChatItem = ({ userId, ButtonClick}) => {
                             {/* <!-- 채팅 item --> */}
                             <main className='mb-3 mr-6' key={item.id}>
                                 <p className='flex items-center justify-center text-sm mb-1'>
-                                    <div>
-                                        {ButtonClick}
-                                    </div>
                                     {item.create_date}
                                 </p>
                                 {/* 내부요소 수직 좌측 정렬 flex item-center /justify-between 는 없음. */}

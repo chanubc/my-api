@@ -7,16 +7,16 @@ import Img01 from '../include/img/img01.jpg'; */
 import axios from 'axios';
 import { ApiSeverUrl } from '../../api/DefaultSetup';
 
-const SalesProduct = () => {
+const SalesProduct = ({userId}) => {
 
     const [data, setData] = useState(null);
 
     useEffect(() => {
         fetchData();
-    }, [])
+    }, [userId])
 
     const fetchData = async () => {
-        return await axios.get(ApiSeverUrl + "/farmer/1/sale/?format=json", {
+        return await axios.get(ApiSeverUrl + "/farmer/"+userId+"/sale/?format=json", {
             headers: {
                 "Access-Control-Allow-Origin": "*",
                 "content-type": "application/json"
