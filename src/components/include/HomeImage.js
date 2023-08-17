@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
 import '../css/home.css'
 // 이미지 로컬 경로
-import ImgEx from "../img/farmMain.jpg";
-import LogoWrite from "../img/jam_write.svg";
-import LogoHome from "../img/mdi_farm.svg";
+import ImgEx from "../include/img/farmMain.jpg";
+import LogoWrite from "../include/img/jam_write.svg";
+import LogoHome from "../include/img/mdi_farm.svg";
 // import generateImageItems from '../function/data.js'; // data.js 파일의 함수를 가져옴
 import Loading from '../effect/Loading';
 import LoadingText from '../effect/LoadingText';
@@ -86,12 +86,26 @@ const HomeImage = () => {
                 </div>
                 {/* <!-- Four columns --> */}
                 <ul className="flex h-fit">
+                    
                     {data.length !== 0 ? (
-                        generateImageItems(data)
+                        
+                        
+                        // generateImageItems(data)
+                        data.slice(0, 4).map((agent, index) => (
+                            <>
+                            <li key={index} className={`w-1/4 bg-gray-500 ${index !== 3 ? 'mr-3' : ''} rounded-[5px]`}>
+                                <img className="image-item" src={agent.avatar} alt="User Avatar" />
+                                {/* <div className='teest'>{agent.title}</div> */}
+                            </li>
+                            </>
+                        ))
+
+                
                     ) : (
 
                         <Loading />
-                    )}
+                    )};
+
                 </ul>
             </article>
         </section>
