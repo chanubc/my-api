@@ -12,33 +12,39 @@ const Guest = () => {
 
   const [data, setData] = useState([]);
 
-  useEffect(() => {
-    const delay = setTimeout(() => {
-      fetchData();
-    }, 3000);
+  const [selectedUserId, setSelectedUserId] = useState(1);
 
-    return () => clearTimeout(delay);
-  }, [])
-
-  const fetchData = async () => {
-    try {
-      const response = await fetch("https://reqres.in/api/users?page=1")
-      if (!response.ok) {
-        throw new Error("응답 없음");
-      }
-
-      const jsonData = await response.json();
-      setData(jsonData.data);
-      // console.log(data);
-
-    } catch (error) {
-      console.error("Fetch 도중 오류 발생");
-    }
+  const handleUserSelect = (userId) => {
+      setSelectedUserId(userId); // 선택된 사용자 정보를 업데이트
   }
 
-  useEffect(() => {
-    console.log("데이터: " + data);
-  }, [data]);
+  // useEffect(() => {
+  //   const delay = setTimeout(() => {
+  //     fetchData();
+  //   }, 3000);
+
+  //   return () => clearTimeout(delay);
+  // }, [])
+
+  // const fetchData = async () => {
+  //   try {
+  //     const response = await fetch("https://reqres.in/api/users?page=1")
+  //     if (!response.ok) {
+  //       throw new Error("응답 없음");
+  //     }
+
+  //     const jsonData = await response.json();
+  //     setData(jsonData.data);
+  //     // console.log(data);
+
+  //   } catch (error) {
+  //     console.error("Fetch 도중 오류 발생");
+  //   }
+  // }
+
+  // useEffect(() => {
+  //   console.log("데이터: " + data);
+  // }, [data]);
 
   return (
     <>
@@ -50,17 +56,17 @@ const Guest = () => {
           <main className="wrapper flex mx-auto">
 
             {/* 좌측 */}
-            <Left />
+            <Left userId={selectedUserId}/>
 
             {/* 가운데 */}
             <section id="center_card" className="center_card  h-screen">
-              <GuestBook />
+              <GuestBook userId={selectedUserId} />
 
             </section>
 
             {/* 우측 */}
             <aside id="right_card" className="w-[26%]  h-full ml-4">
-              <RightTop />
+              <RightTop onUserSelect={handleUserSelect}/>
               <RightBottom />
             </aside>
 

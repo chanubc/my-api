@@ -4,7 +4,9 @@ import IconMessage from '../../img/MessageIcon.svg'
 import AxiosTest from './InputButton';
 import ChatItem from './ChatItem';
 
-const GuestBook = () => {
+const GuestBook = ({userId}) => {
+
+    
     return (
         // <!-- 방명록 -->
         <section className="relative w-full h-[85%] rounded-[20px] shadow-lg bg-[#FAFAFA]">
@@ -18,7 +20,7 @@ const GuestBook = () => {
 
                 {/* 중반부 박스 */}
                 <div className='h-[29rem] overflow-y-scroll'>
-                    <ChatItem />
+                    <ChatItem userId={userId}/>
                 </div>
 
 
