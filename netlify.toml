@@ -1,5 +1,5 @@
 [[redirects]]
-  from = "/proxy/*"
-  to = "https://508a-221-147-33-206.ngrok-free.app/:splat"
+  from = "/api/*"
+  to = "http://13.125.94.87/:splat"
   status = 200
   force = true
