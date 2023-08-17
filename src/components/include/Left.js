@@ -83,10 +83,10 @@ const Left = () => {
                             {/* 상단 부 이미지 */}
                             <section className="relative">
                                 <div className="h-36 bg-neutral-700 rounded-t-[20px]">
-                                    <img className="image w-full h-full" src={decodeURIComponent(data.Farmer_back_pic.substr(1))} alt="Sunset in the mountains" />
+                                    <img className="image w-full h-full" src={data.Farmer_back_pic} alt="Sunset in the mountains" />
                                 </div>
                                 <div id="custom-ha" className='w-fit h-fit inline-block'>
-                                    <img className="image bg-white custom-ha w-[7.5rem] h-[7.5rem] rounded-[50%] ring-4 ring-gray-50" src={decodeURIComponent(data.Farmer_pic.substr(1))} alt="Bordered avatar" />
+                                    <img className="image bg-white custom-ha w-[7.5rem] h-[7.5rem] rounded-[50%] ring-4 ring-gray-50" src={data.Farmer_pic} alt="Bordered avatar" />
                                 </div>
                             </section>
 

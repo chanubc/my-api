@@ -1,35 +1,41 @@
 import React, { useEffect, useState } from 'react';
 import '../../css/home.css';
 import LoadingText from '../../effect/LoadingText';
+import axios from 'axios'; // Import Axios
+import { ApiSeverUrl } from '../../../api/DefaultSetup';
+
 
 
 
 const NeighborList = () => {
 
-    const [data, setData] = useState([]);
+    const [data, setData] = useState(null);
+    const [selectedUser, setSelectedUser] = useState(null); // 추가: 선택된 사용자 상태
 
     useEffect(() => {
-        const delay = setTimeout(() => {
-            fetchData();
-        }, 3000);
-
-        return () => clearTimeout(delay);
+        fetchData();
     }, [])
 
     const fetchData = async () => {
-        try {
-            const response = await fetch("https://reqres.in/api/users?page=1")
-            if (!response.ok) {
-                throw new Error("응답 없음");
+        return await axios.get(ApiSeverUrl + "/farmer/1/?format=json", {
+            headers: {
+                "Access-Control-Allow-Origin": "*",
+                "content-type": "application/json",
+                "ngrok-skip-browser-warning": "true",
             }
 
-            const jsonData = await response.json();
-            setData(jsonData.data);
-            console.log(data);
+        }).then((response) => {
+            console.log(response);
+            setData(response.data);
+            console.log(response.data.Farmer_back_pic.substr(1))
+            console.log(decodeURIComponent(response.data.Farmer_back_pic.substr(1)))
+        }).catch((error) => {
+            console.log(error);
+        });
+    }
 
-        } catch (error) {
-            console.error("Fetch 도중 오류 발생");
-        }
+    const handleUserClick = (index) => {
+        setSelectedUser(data[index]); // 사용자를 선택한 경우, 선택된 사용자 상태를 업데이트
     }
 
 
@@ -39,7 +45,7 @@ const NeighborList = () => {
                 <>
                     {data.slice(0, 3).map((user, index) => (
                         <>
-                            <div key={index} className='block overflow-hidden' >
+                            <div key={index} className='block overflow-hidden' onClick={() => handleUserClick(index)} >
                                 <section className="flex items-center py-2 hover:bg-[#D3DEDA] hover:rounded-[10px] duration-300 ease-in-out">
 
                                     <img className="w-14 h-14 rounded-full mr-2 bg-black" src={user.avatar} alt="Avatar of Jonathan Reinink" />

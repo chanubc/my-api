@@ -18,7 +18,7 @@ import { ApiSeverUrl } from '../../api/DefaultSetup';
 const HomeImage = () => {
 
 
-    const [data, setData] = useState([]);
+    const [data, setData] = useState(null);
 
     useEffect(() => {
         fetchData();
@@ -93,10 +93,10 @@ const HomeImage = () => {
                 </div>
                 {/* <!-- Four columns --> */}
                 <ul className="flex h-fit">
-                    {data !== null ?  (
+                    {data !== null ? (
                         // 아이템 붙이는 코드
-                        // generateImageItems(data)
-                        <></>
+                        generateImageItems(data)
+
                     ) : (
                         <Loading />
                     )}
@@ -108,15 +108,15 @@ const HomeImage = () => {
 
 
     // item 붙이는 코드
-    // function generateImageItems(data) {
-    //     return data.Farm.Farm_pic.map((item, index) => (
-    //         <li key={index} className={`w-1/4 bg-gray-500 ${index !== 3 ? 'mr-3' : ''} rounded-[5px]`}>
-    //             <img className="image-item" src={item.Farm_pics} alt="User Avatar" />
-    //             {/* <div className='teest'>{agent.title}</div> */}
-    //         </li>
-    //     ));
+    function generateImageItems(data) {
+        return data.map((item, index) => (
+            <li key={index} className={`w-1/4 bg-gray-500 ${index !== 3 ? 'mr-3' : ''} rounded-[5px]`}>
+                <img className="image-item" src={item.Farm_pics} alt="User Avatar" />
+                {/* <div className='teest'>{agent.title}</div> */}
+            </li>
+        ));
 
-    // };
+    };
 
 }
 
