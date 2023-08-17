@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
-import IconWrite from '../../img/Icon_write.svg'
-import IconDelete from '../../img/Icon_trash.svg'
+import IconWrite from '../img/Icon_write.svg'
+import IconDelete from '../img/Icon_trash.svg'
 import LoadingText from '../../effect/LoadingText';
 
 const ChatItem = () => {

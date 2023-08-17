@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
-import ImgTop from "../img/left_top.png";
-import LogoProfile from "../img/nameIcon.svg";
-import LogoWrite from "../img/jam_write.svg";
+import ImgTop from "../include/img/left_top.png";
+import LogoProfile from "../include/img/nameIcon.svg";
+import LogoWrite from "../include/img/jam_write.svg";
 import LoadingText from '../effect/LoadingText';
 import { Skeleton } from 'antd';
 import axios from 'axios'; // Import Axios

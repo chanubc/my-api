@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import IconButton from '../../img/Button_write.svg'
+import IconButton from '../img/Button_write.svg'
 
 const InputButton = () => {
     const [inputTest, setTextareaValue] = useState(""); // 제목 값을 저장하는 상태 변수
