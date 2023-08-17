@@ -1,13 +1,20 @@
-import React from 'react';
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
 import Navbar from "../include/nav/Navbar";
 import Left from '../include/Left';
 import RightTop from '../include/right/RightTop';
 import RightBottom from '../include/right/RightBottom';
 import SalesProduct from '../include/SalesProduct';
 
+
 // 필요한 코드를 추가하세요
 const Sales = () => {
+
+  const [selectedUserId, setSelectedUserId] = useState(1);
+
+  const handleUserSelect = (userId) => {
+      setSelectedUserId(userId); // 선택된 사용자 정보를 업데이트
+  }
+
   return (
     <>
       <Navbar />

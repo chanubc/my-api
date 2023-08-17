@@ -41,9 +41,6 @@ const Left = ({ userId }) => {
   // }, [])
 
 
-
-
-
     const fetchData = async () => {
         // return await axios.get(ApiSeverUrl + "/farmer/1/?format=json", {
         return await axios.get(`${ApiSeverUrl}/farmer/${userId}/?format=json`, {
@@ -64,37 +61,6 @@ const Left = ({ userId }) => {
         });
     }
 
-
-    /*
-    {
-        "Farmer_pic": "/https%3A/drive.google.com/uc%3Fid%3D19dqkjHUzipwmrPNezLhNc535AtmVnq2U",
-        "Farmer_back_pic": "/https%3A/drive.google.com/uc%3Fid%3D1_Xf3vmANSTDm5pcq709BYyyom1hegLUv",
-        "Farmer_name": "NohSeonJae",
-        "Farmer_tel": "01012345678",
-        "Farmer_intro": "반갑습니다",
-        "Farm": {
-            "master": 1,
-            "Farm_pic": [
-                {
-                    "Farm_pics": "/https%3A/drive.google.com/uc%3Fid%3D1IxQy7BEMB_J-VHXgHMogkvIokD4O1iWe"
-                },
-                {
-                    "Farm_pics": "/https%3A/drive.google.com/uc%3Fid%3D1g0ZTlEgZm7P5XXfeBYfWS9D4YgolCBBr"
-                },
-                {
-                    "Farm_pics": "/https%3A/drive.google.com/uc%3Fid%3D1qfd6nzcCp566NKtkt9Cs4vvPIhEmCMIr"
-                },
-                {
-                    "Farm_pics": "/https%3A/drive.google.com/uc%3Fid%3D1lON2uZOjynjclfLXlRi56Hz_GtyPpZiR"
-                },
-                {
-                    "Farm_pics": "/https%3A/drive.google.com/uc%3Fid%3D1qkV9T_O99gyA-YowdO2Rs78bVVpzw6eg"
-                }
-            ]
-        }
-    }
-    */
-
     return (
         <>
             <aside id="left_card" className="w-[22%] h-screen mr-4">
@@ -109,7 +75,7 @@ const Left = ({ userId }) => {
                                     <img className="image w-full h-full" src={data.Farmer_back_pic} alt="Sunset in the mountains" />
                                 </div>
                                 <div id="custom-ha" className='w-fit h-fit inline-block'>
-                                    <img className="image bg-white custom-ha w-[7.5rem] h-[7.5rem] rounded-[50%] ring-4 ring-gray-50" src={data.Farmer_pic} alt="Bordered avatar" />
+                                    <img className="image bg-white custom-ha w-[7.5rem] h-[7.5rem] max-h-max-[7.5rem] rounded-[50%] ring-4 ring-gray-50 overflow-hidden" src={data.Farmer_pic} alt="Bordered avatar" />
                                 </div>
                             </section>
 
