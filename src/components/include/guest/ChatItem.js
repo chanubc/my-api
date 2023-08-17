@@ -6,9 +6,10 @@ import LoadingText from '../../effect/LoadingText';
 import axios from 'axios';
 import { ApiSeverUrl } from '../../../api/DefaultSetup';
 
-const ChatItem = ({userId}) => {
+const ChatItem = ({ userId, ButtonClick}) => {
 
     const [data, setData] = useState([]);
+
 
     // useEffect(() => {
     //     const delay = setTimeout(() => {
@@ -19,15 +20,18 @@ const ChatItem = ({userId}) => {
     // }, [])
 
     useEffect(() => {
-            fetchData(userId);
-    }, [userId])
+        console.log(ButtonClick+"in child")
+
+        fetchData(userId);
+    }, [userId,ButtonClick])
 
 
-    const fetchData = async () => {
+
+    const fetchData = async (userId) => {
         // await new Promise(resolve => setTimeout(resolve, 3000));
 
         // return await axios.get(ApiSeverUrl + "/farmer/${setindex+1}/farm/?format=json", {
-        return  axios.get(`${ApiSeverUrl}/farmer/${userId}/guestbook/?format=json`, {
+        return axios.get(`${ApiSeverUrl}/farmer/${userId}/guestbook/?format=json`, {
             headers: {
                 "Access-Control-Allow-Origin": "*",
                 "content-type": "application/json",
@@ -37,49 +41,21 @@ const ChatItem = ({userId}) => {
         }).then((response) => {
             console.log(response);
             setData(response.data);
-            console.log(response.data.Farmer_back_pic.substr(1))
-            console.log(decodeURIComponent(response.data.Farmer_back_pic.substr(1)))
+           
         }).catch((error) => {
             console.log(error);
         });
     }
 
-    const DeleteData = async(itemId) =>{
+    const DeleteData = async (itemId) => {
 
-    const result =  await axios.delete(`${ApiSeverUrl}/farmer/${userId}/guestbook/${itemId}/`);
-    if (result.status === 204) {
-        const result = data.map(
-            m => m.id !== itemId
-        )
-        setData(result)
-    }
+        const result = await axios.delete(`${ApiSeverUrl}/farmer/${userId}/guestbook/${itemId}/`);
+        if (result.status === 204) {
+            fetchData(userId)
+        }
 
     }
 
-
-
-    // const fetchData = async () => {
-    //     try {
-    //         const response = await fetch("https://reqres.in/api/users?page=1", {
-    //             headers: {
-    //                 "Access-Control-Allow-Origin": "*",
-    //                 "content-type": "application/json",
-    //             }
-
-    //         });
-
-    //         if (!response.ok) {
-    //             throw new Error("응답 없음");
-    //         }
-
-    //         const jsonData = await response.json();
-    //         setData(jsonData.data);
-    //         console.log(data);
-
-    //     } catch (error) {
-    //         console.error("Fetch 도중 오류 발생");
-    //     }
-    // }
 
     return (
         <>
@@ -90,6 +66,9 @@ const ChatItem = ({userId}) => {
                             {/* <!-- 채팅 item --> */}
                             <main className='mb-3 mr-6' key={item.id}>
                                 <p className='flex items-center justify-center text-sm mb-1'>
+                                    <div>
+                                        {ButtonClick}
+                                    </div>
                                     {item.create_date}
                                 </p>
                                 {/* 내부요소 수직 좌측 정렬 flex item-center /justify-between 는 없음. */}

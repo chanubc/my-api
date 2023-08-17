@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import LoadingText from '../../effect/LoadingText';
 import NeighborApi from '../../../api/NeighborApi';
 
-const NeighborList = ( props ) => {
+const NeighborList = (props) => {
     const [data, setData] = useState([]);
     const [selectedUser, setSelectedUser] = useState(1);
 
@@ -16,7 +16,7 @@ const NeighborList = ( props ) => {
         try {
             const response = await NeighborApi.getNeighborList(userId);
             setData(response.data.neighbors);
-            console.log(userId+" userId in neighbor");
+            console.log(userId + " userId in neighbor");
 
         } catch (error) {
             console.error("Fetch 도중 오류 발생");
@@ -26,7 +26,7 @@ const NeighborList = ( props ) => {
     const handleUserClick = (userId) => { // userId를 매개변수로 받음
         props.onUserSelect(userId)
         setSelectedUser(userId); // 사용자 아이디를 선택된 사용자로 업데이트
-        console.log(userId+" click");
+        console.log(userId + " click");
         fetchData(userId); // 사용자가 클릭되면 해당 사용자의 데이터를 가져옴
     };
 
