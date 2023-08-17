@@ -30,6 +30,7 @@ const Home = () => {
           <main className="wrapper flex mx-auto">
 
             {/* 좌측 */}
+            
             <Left userId={selectedUserId} />
 
             {/* 가운데 */}

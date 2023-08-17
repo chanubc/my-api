@@ -63,7 +63,7 @@ const Left = ({ userId }) => {
 
     return (
         <>
-            <aside id="left_card" className="w-[22%] h-screen mr-4">
+            <aside id="left_card" className="w-[22%] min-w-[15.4rem] h-screen mr-4">
                 {/* <!-- 내부카드 --> */}
                 <section className="w-full rounded-[20px] h-[85%] overflow-hidden shadow-lg bg-[#FAFAFA]">
 

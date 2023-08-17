@@ -62,41 +62,14 @@ const HomeImage = ({ userId }) => {
             }
 
         }).then((response) => {
-            console.log(response);
             setData(response.data);
-            console.log(response.data.Farmer_back_pic.substr(1))
-            console.log(decodeURIComponent(response.data.Farmer_back_pic.substr(1)))
+         
         }).catch((error) => {
             console.log(error);
         });
     }
 
-    // const fetchData = async () => {
-    //     try {
-    //         const response = await axios.get("https://9bf2-121-135-149-228.ngrok-free.app/farmin/posts/?format=json", {
-    //             headers: {
-    //                 "Access-Control-Allow-Origin": "*",
-    //                 "content-type": "application/json",
-    //                 'ngrok-skip-browser-warning': '69420',
-    //             }
-    //         });
 
-    //         if (!response.ok) {
-    //             throw new Error("응답 없음");
-    //         }
-
-    //         const jsonData = await response.json();
-    //         setData(jsonData.data);
-    //         console.log(data);
-    //     } catch (error) {
-    //         console.error("Fetch 도중 오류 발생");
-    //     }
-    // }
-
-
-    useEffect(() => {
-        console.log("데이터: " + data);
-    }, [data]);
 
     return (
         // <!-- 나의농장 -->
@@ -114,8 +87,6 @@ const HomeImage = ({ userId }) => {
                     {/* 메인 이미지 */}
                     <MyCarousel userId={userId} />
 
-                    {/* <img id="image_main" className="image h-[300px] rounded-md mb-3 bg-gray-800"
-                        src={ImgEx} alt="Sunset in the mountains" /> */}
                 </div>
                 {/* <!-- Four columns --> */}
                 <ul className="flex h-fit">
