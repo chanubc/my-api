@@ -4,54 +4,43 @@ import '../css/sale.css';
 import ImgHeart from '../include/img/Vector.svg';
 import Thumb from '../include/img/thumb.jpg';
 import Img01 from '../include/img/img01.jpg';
+import axios from 'axios';
+import { ApiSeverUrl } from '../../api/DefaultSetup';
 
 const SalesProduct = () => {
 
-    const [data, setData] = useState([]);
+    const [data, setData] = useState(null);
 
     useEffect(() => {
-        const delay = setTimeout(() => {
-            fetchData();
-        });
-
-        return () => clearTimeout(delay);
+        fetchData();
     }, [])
 
     const fetchData = async () => {
-        try {
-            const response = await fetch(""
-                , {
-                    headers: {
-                        "Access-Control-Allow-Origin": "*",
-                        "content-type": "application/json",
-                    }
-
-                });
-
-            if (!response.ok) {
-                throw new Error("응답 없음");
+        return await axios.get(ApiSeverUrl + "/farmer/1/sale/?format=json", {
+            headers: {
+                "Access-Control-Allow-Origin": "*",
+                "content-type": "application/json"
             }
 
-            const jsonData = await response.json();
-            setData(jsonData.data);
-            console.log(data);
-
-        } catch (error) {
-            console.error("Fetch 도중 오류 발생");
-        }
+        }).then((response) => {
+            console.log(response);
+            setData(response.data);
+        }).catch((error) => {
+            console.log(error);
+        });
     }
 
     return (
 
         <>
-            {data.length !== 0 ? (
+            {data !== null ? (
                 <>
-                    {data.map((farmer) => (
+                    {data && data.results.map((f) => (
                         <>
 
                             {/* <!-- 판매중인 상품 --> */}
                             {/* <!-- 전체 배경 --> */}
-                            <section key={farmer.id} id="picture "
+                            <section key={f.author} id="picture"
                                 className="picture w-full rounded-[20px] overflow-hidden shadow-lg bg-[#FBFBFB]">
                                 {/* <!-- picture 영역 padding 적용 --> */}
                                 < div className="px-6 py-5">
@@ -61,12 +50,12 @@ const SalesProduct = () => {
                                                 <article class="contents">
                                                     <header class="top">
                                                         <div class="profile_img">
-                                                            <img src={farmer.Farmer_pic} className='h-[42px] [bg-gray-500]' alt={"프로필이미지"} />
+                                                            <img src={f.author_pic} className='w-full h-full [bg-gray-500]' alt={"프로필이미지"} />
 
                                                         </div>
 
                                                         <div class="user_name">
-                                                            {/* <div class="nick_name m_text">{farmer.title}</div> */}
+                                                            <div class="nick_name m_text">{f.author}</div>
                                                             <div class="timer">10분전 </div>
 
                                                         </div>
@@ -78,7 +67,7 @@ const SalesProduct = () => {
                                                             <div>
                                                                 {/* <img src={Img01} alt="img01"></img> */}
 
-                                                                <img src={farmer.Post_pics} className='w-full h-[300.88px] bg-[lightgray 0px -596.153px / 105.366% 246.463% no-repeat, #D9D9D9] ' alt={"프로필이미지"} />
+                                                                <img src={f.Post_pics} className='w-full h-[300.88px] bg-[lightgray 0px -596.153px / 105.366% 246.463% no-repeat, #D9D9D9] ' alt={"프로필이미지"} />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -93,7 +82,7 @@ const SalesProduct = () => {
                                                     <div class="comment_container">
                                                         <div class="comment">
                                                             <div>
-                                                                {farmer.Farmer_intro}
+                                                                {f.content}
                                                             </div>
 
 
@@ -106,7 +95,7 @@ const SalesProduct = () => {
                                                             <div class="likes_m_text">
                                                                 <div class="likes_m_container" >
                                                                     <img src={ImgHeart} alt="하트아이콘" ></img>
-                                                                    {/* <span class="count" >현재 {farmer.like}명이 구매중입니다.</span> */}
+                                                                    <span class="count" >현재 {f.like}명이 구매중입니다.</span>
 
 
                                                                 </div>
@@ -133,33 +122,29 @@ const SalesProduct = () => {
                     <h1>로딩중.....</h1>
                 </>
             )}
+
+            {/* <!-- 우측 --> */}
+            < aside id="right_card" class="w-[26%]  h-full ml-4" >
+
+                {/* <!-- 이웃목록 --> */}
+                <section section id="neighbor" class="neighbor" >
+                    <script>
+                        $('#neighbor').load('/include/right.html')
+                    </script>
+                </section>
+
+                {/* <!-- 최근인기상품 --> */}
+                <section section id="hot_product" class="hot_product" >
+                    <script>
+                        $('#hot_product').load('/include/right_bottom.html')
+                    </script>
+                </section>
+
+
+            </aside >
         </>
+    )
 
 
-    );
 };
-{/* <!-- 우측 --> */ }
-< aside id="right_card" class="w-[26%]  h-full ml-4" >
-
-    {/* <!-- 이웃목록 --> */}
-    <section section id="neighbor" class="neighbor" >
-        <script>
-            $('#neighbor').load('/include/right.html')
-        </script>
-    </section>
-
-    {/* <!-- 최근인기상품 --> */}
-    <section section id="hot_product" class="hot_product" >
-        <script>
-            $('#hot_product').load('/include/right_bottom.html')
-        </script>
-    </section>
-
-
-</aside >
-
-
-
-
-
 export default SalesProduct;
