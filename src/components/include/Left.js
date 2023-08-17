@@ -13,17 +13,32 @@ import { ApiSeverUrl } from '../../api/DefaultSetup';
 import '../css/home.css'
 import Loading from '../effect/Loading';
 
-const Left = () => {
-    const [data, setData] = useState(null);
+const Left = ({ userId }) => {
+    const [data, setData] = useState();
+    // const [userId, setUserId] = useState(1); // 초기 userId를 1로 설정
+
 
     useEffect(() => {
-        fetchData();
-    }, [])
+
+        if (userId === null) {
+            userId = 1
+        }
+
+
+        fetchData(userId);
+
+
+
+        console.log(userId + " in left")
+    }, [userId]); // userId가 변경될 때마다 fetchData 실행
+
+
 
 
 
     const fetchData = async () => {
-        return await axios.get(ApiSeverUrl + "/farmer/1/?format=json", {
+        // return await axios.get(ApiSeverUrl + "/farmer/1/?format=json", {
+        return await axios.get(`${ApiSeverUrl}/farmer/${userId}/?format=json`, {
             headers: {
                 "Access-Control-Allow-Origin": "*",
                 "content-type": "application/json",
@@ -31,10 +46,11 @@ const Left = () => {
             }
 
         }).then((response) => {
-            console.log(response);
+            console.log(userId + "left")
+            console.log(response.data + "in left data");
             setData(response.data);
-            console.log(response.data.Farmer_back_pic.substr(1))
-            console.log(decodeURIComponent(response.data.Farmer_back_pic.substr(1)))
+            // console.log(response.data.Farmer_back_pic)
+            // console.log(decodeURIComponent(response.data.Farmer_back_pic))
         }).catch((error) => {
             console.log(error);
         });
@@ -111,8 +127,9 @@ const Left = () => {
                                     <img className='ml-auto rounded transition duration-150 ease-in-out hover:bg-[#D3DEDA] focus:outline-none focus:ring-0 active:text-primary-700'
                                         src={LogoWrite} alt='logo' />
                                 </div>
-                                <p className="text-[#666666] text-base font-medium">
-                                    {data.Farmer_intro}</p>
+                                <p className="text-[#666666] text-base font-medium overflow-hidden text-ellipsis ">
+                                    {data.Farmer_intro}
+                                </p>
                                 {/* <p className="text-[#666666] text-base font-medium mt-3">
                                     반갑습니다 저는 고령에서 벼와 콩을 재배하고 있습니다.</p> */}
                             </article>

@@ -15,11 +15,12 @@ const Home = () => {
 
   const [data, setData] = useState([]);
 
-  // const [selectedUser, setSelectedUser] = useState(null);
 
-  // const handleUserSelect = (user) => {
-  //   setSelectedUser(user); // 선택된 사용자를 상태로 업데이트
-  // }
+  const [selectedUserId, setSelectedUserId] = useState(null);
+
+  const handleUserSelect = (userId) => {
+      setSelectedUserId(userId); // 선택된 사용자 정보를 업데이트
+  }
 
 
   useEffect(() => {
@@ -48,9 +49,9 @@ const Home = () => {
     }
   }
 
-  useEffect(() => {
-    console.log("데이터: " + data);
-  }, [data]);
+  // useEffect(() => {
+  //   console.log("데이터: " + data);
+  // }, [data]);
 
   return (
     <>
@@ -63,7 +64,7 @@ const Home = () => {
           <main className="wrapper flex mx-auto">
 
             {/* 좌측 */}
-            <Left />
+            <Left userId={selectedUserId}/>
 
             {/* 가운데 */}
             <section id="center_card" className="center_card  h-screen">
@@ -75,7 +76,7 @@ const Home = () => {
 
             {/* 우측 */}
             <aside id="right_card" className="w-[26%]  h-full ml-4">
-              <RightTop  />
+              <RightTop onUserSelect={handleUserSelect} />
               <RightBottom />
             </aside>
 
