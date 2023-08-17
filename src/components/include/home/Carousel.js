@@ -30,7 +30,7 @@ const MyCarousel = ({ userId }) => {
 
     return (
         <Carousel dots={true} pauseOnHover={true}>
-            {data.map((item, index) => (
+            {data.slice(0,4).map((item, index) => (
                 <div key={item.Farm_id}>
                     <img className='image max-h-[900px] h-[300px] rounded-md bg-gray-800'
                         src={item.Farm_pics} alt={`home_image_${index}`} />
