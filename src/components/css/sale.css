@@ -1,5 +1,4 @@
 #main_container {
-
     display: flex;
     justify-content: center;
     /*x축 가운데 정렬*/
@@ -12,21 +11,17 @@
 
 .contents {
     width: 614px;
-    height: 700px;
+    height: 500px;
     border: 1px solid rgba(0, 0, 0, 0.09);
     border-radius: 3px;
     /*테두리를 둥글게 */
     margin-bottom: 60px;
     /*다른 contents들이 밀려야하므로 사이에 여백주기*/
     background: white;
-
-
 }
 
 
 .contents .top {
-
-
     display: flex;
     /*justify-content: space-between;*/
     align-items: center;
@@ -34,14 +29,25 @@
 }
 
 
+
 .contents .top .profile_img {
-    width: 56px;
-    height: 56px;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
     /*원형태*/
     overflow: hidden;
     /*자식이 크기가 넘치지 않도록 함*/
-    margin-right: 8px;
+    margin-right: 10px;
+
+
+
+    .contents .top .profile_img img {
+
+        width: 100%;
+        /*100%없으면 이미지가 들어가지 않음*/
+
+    }
+
 }
 
 .contents .top .profile_img .user_name {
@@ -59,81 +65,62 @@
 
 
 .m_text {
-    font-size: 16px;
+    font-size: 14px;
     font-weight: bold;
 }
 
 .s_text {
-    color: #8C8C8C;
-    font-size: 12.8px;
-    font-weight: 500;
+    font-size: 12px;
 }
 
 /*img_section*/
 .contents .img_section {
 
-
     overflow: hidden;
-
-    border-radius: 20px;
-    /*이미지 변환을 위한 사이드 굴절 추가*/
 }
 
-.contents .img_section .img {
-
-    /*  width: 820px;
-    height: 519px; */
+.contents .img_section img {
     border-radius: 20px 20px 0px 25px;
     width: 100%;
 }
 
 /*img_section과 댓글 사이 정렬*/
-/* .contents .bottom_icons {
+.contents .bottom_icons {
     display: flex;
     justify-content: space-between;
     padding: 10px 20px;
-
-} */
+}
 
 /*댓글*/
 .contents .comment_container {
     display: flex;
     /*가로 배치*/
-    justify-content: flex-start;
-
 }
 
 .contents .comment_container .comment {
 
     display: flex;
     /*가로배치*/
-    justify-content: space-between;
-    float: left;
-
-    font-size: 18px;
+    font-size: 14px;
     flex-direction: column;
-    text-align: left;
-    padding: 10px;
+    text-align: justify;
 
 }
 
 /*구매하기*/
 .contents .comment_container .purchase {
-    margin-left: auto;
-    padding: 10px;
 
-
-    /*    display: inline-block;
+    display: inline-block;
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
- */
+
 }
 
 .contents .comment_container .purchase .my-button {
 
-    width: 104px;
-    height: 50px;
+    width: 100px;
+    height: 45px;
     background-color: #00A884;
     /* 버튼 배경색 */
     border: none;
@@ -143,7 +130,7 @@
     border-radius: 8px;
     /* 모서리 둥글게 */
 
-    font-size: 16px;
+    font-size: 15px;
     /* 글자 크기 */
     color: white;
     /* 글자색 */
@@ -155,18 +142,19 @@
 
 
 
+
 }
 
 
 .contents .comment_container .purchase .count {
 
-    width: 100px;
+    width: 100%;
     height: 56px;
     font-weight: 500;
     font-size: 9px;
     color: black;
 
-    /*    overflow: hidden; */
+    overflow: hidden;
 }
 
 .my-button:hover {
@@ -180,32 +168,20 @@
 
 /*좋아요, 구매자 수 텍스트 class*/
 .likes_m_text {
-    display: flex;
-    /* 텍스트와 이미지를 가로로 정렬 */
-
-    align-items: center;
-    /* 세로 가운데 정렬 */
-    /*justify-self: space-between;*/
-
+    display: inline-flex;
 
 }
 
-.likes_m_text .img {
-
-    width: 10px;
+.likes_m_text img {
+    width: 12px;
     /* 아이콘 크기 조절 */
     height: 10px;
-    /*  margin-right: 2px; */
+    margin-right: 2px;
     /* 아이콘과 텍스트 사이 간격 조절 */
-
-    object-fit: cover;
-
-
 }
 
 
 .likes_m_text .count {
-
     font-size: 12px;
     /* 텍스트 크기 조절 */
 
@@ -214,5 +190,4 @@
     /*연속 공백을 하나로 합침. 줄 바꿈은 <br> 요소에서만 일어납니다.*/
     /*text-overflow: ellipsis;*/
     letter-spacing: -1px;
-
 }
