@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from "react-router-dom";
-import Logo from '../../img/Logo_farmerin.svg'; // 이미지 경로 설정
+import Logo from '../img/Logo_farmerin.svg'; // 이미지 경로 설정
 import NavText from './NavText'; // 이미지 경로 설정
 
 

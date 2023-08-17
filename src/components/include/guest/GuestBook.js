@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
-import IconMessage from '../../img/MessageIcon.svg'
+import IconMessage from '../img/MessageIcon.svg'
 import AxiosTest from './InputButton';
 import ChatItem from './ChatItem';
 
