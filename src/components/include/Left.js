@@ -20,7 +20,6 @@ const Left = () => {
         fetchData();
     }, [])
 
-    const PROXY = window.location.hostname === 'localhost' ? '' : '/proxy';
 
 
     const fetchData = async () => {

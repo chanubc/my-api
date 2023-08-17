@@ -3,7 +3,14 @@ import { Link } from "react-router-dom";
 import NeighborList from './NeighborList';
 import ButtonRight from './ButtonRight';
 
-const RightTop = () => {
+const RightTop = (onUserSelect ) => {
+    // const [selectedUser, setSelectedUser] = useState(null);
+
+    // const handleUserSelect = (user) => {
+    //     setSelectedUser(user);
+
+    // }
+
     return (
         // <!-- 우측 -->
 
@@ -11,7 +18,7 @@ const RightTop = () => {
             <div className="px-6 py-5">
                 <div className="font-bold text-xl mb-2">이웃 목록</div>
 
-                <NeighborList />
+                <NeighborList/>
 
                 <ButtonRight />
 

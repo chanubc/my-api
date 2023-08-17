@@ -15,20 +15,20 @@ import { ApiSeverUrl } from '../../api/DefaultSetup';
 
 
 
-const HomeImage = () => {
+const HomeImage = ({setindex}) => {
 
 
     const [data, setData] = useState(null);
 
     useEffect(() => {
-        fetchData();
+        fetchData(setindex);
     }, [])
 
     const PROXY = window.location.hostname === 'localhost' ? '' : '/proxy';
 
 
-    const fetchData = async () => {
-        return await axios.get(ApiSeverUrl + "/farmer/1/?format=json", {
+    const fetchData = async (setindex) => {
+        return await axios.get(ApiSeverUrl + "/farmer/${setindex+1}/farm/?format=json", {
             headers: {
                 "Access-Control-Allow-Origin": "*",
                 "content-type": "application/json",
@@ -109,7 +109,7 @@ const HomeImage = () => {
 
     // item 붙이는 코드
     function generateImageItems(data) {
-        return data.map((item, index) => (
+        return data.slice(0,4).map((item, index) => (
             <li key={index} className={`w-1/4 bg-gray-500 ${index !== 3 ? 'mr-3' : ''} rounded-[5px]`}>
                 <img className="image-item" src={item.Farm_pics} alt="User Avatar" />
                 {/* <div className='teest'>{agent.title}</div> */}

@@ -15,6 +15,13 @@ const Home = () => {
 
   const [data, setData] = useState([]);
 
+  // const [selectedUser, setSelectedUser] = useState(null);
+
+  // const handleUserSelect = (user) => {
+  //   setSelectedUser(user); // 선택된 사용자를 상태로 업데이트
+  // }
+
+
   useEffect(() => {
     const delay = setTimeout(() => {
       fetchData();
@@ -22,6 +29,8 @@ const Home = () => {
 
     return () => clearTimeout(delay);
   }, [])
+
+
 
   const fetchData = async () => {
     try {
@@ -45,7 +54,7 @@ const Home = () => {
 
   return (
     <>
-      <Navbar/>
+      <Navbar />
 
       <div className="wrapping">
         {/* navbar제외 영역 */}
@@ -58,7 +67,7 @@ const Home = () => {
 
             {/* 가운데 */}
             <section id="center_card" className="center_card  h-screen">
-              <HomeImage />
+              <HomeImage  />
               <HomeGuest />
               {/* <ChatItem /> */}
 
@@ -66,7 +75,7 @@ const Home = () => {
 
             {/* 우측 */}
             <aside id="right_card" className="w-[26%]  h-full ml-4">
-              <RightTop />
+              <RightTop  />
               <RightBottom />
             </aside>
 
