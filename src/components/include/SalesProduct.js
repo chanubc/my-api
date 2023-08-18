@@ -93,12 +93,12 @@ const SalesProduct = () => {
                                                                 구매하기</button>
 
                                                             <div class="likes_m_text">
-                                                                <div class="likes_m_container" >
-                                                                    <img src={ImgHeart} alt="하트아이콘" ></img>
-                                                                    <span class="count" >현재 {f.like}명이 구매중입니다.</span>
+
+                                                                <img src={ImgHeart} alt="하트아이콘" ></img>
+                                                                <span class="count" >현재 {f.like}명이 구매중입니다.</span>
 
 
-                                                                </div>
+
                                                             </div>
 
 

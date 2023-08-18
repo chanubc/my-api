@@ -7,7 +7,7 @@ import axios from 'axios';
 import { ApiSeverUrl } from '../../../api/DefaultSetup';
 import LoadingGuest from './LoadingGuest';
 
-const ChatItem = ({ userId, ButtonClick}) => {
+const ChatItem = ({ userId, ButtonClick }) => {
 
     const [data, setData] = useState([]);
 
@@ -21,10 +21,10 @@ const ChatItem = ({ userId, ButtonClick}) => {
     // }, [])
 
     useEffect(() => {
-        console.log(ButtonClick+"in child")
+        console.log(ButtonClick + "in child")
 
         fetchData(userId);
-    }, [userId,ButtonClick])
+    }, [userId, ButtonClick])
 
 
 
@@ -32,7 +32,7 @@ const ChatItem = ({ userId, ButtonClick}) => {
         // await new Promise(resolve => setTimeout(resolve, 3000));
 
 
-        <LoadingGuest/>
+        <LoadingGuest />
         // return await axios.get(ApiSeverUrl + "/farmer/${setindex+1}/farm/?format=json", {
         return axios.get(`${ApiSeverUrl}/farmer/${userId}/guestbook/?format=json`, {
             headers: {
@@ -44,7 +44,7 @@ const ChatItem = ({ userId, ButtonClick}) => {
         }).then((response) => {
             console.log(response);
             setData(response.data);
-           
+
         }).catch((error) => {
             console.log(error);
         });
