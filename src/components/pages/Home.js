@@ -12,23 +12,29 @@ import ChatItem from '../include/guest/ChatItem';
 const Home = () => {
 
   const firstUserId = localStorage.getItem('selectUserId'); // userId를 localStorage에서 읽어옴
-  
-  
+
+
   useEffect(() => {
-    handleUserSelect(firstUserId);
+    if (firstUserId) {
+      handleUserSelect(firstUserId);
+    }
+    else {
+      handleUserSelect(1);
+    }
+
   }, [firstUserId])
   const [selectedUserId, setSelectedUserId] = useState(firstUserId);
 
   const handleUserSelect = (userId) => {
     setSelectedUserId(userId); // 선택된 사용자 정보를 업데이트
-    console.log(userId+"inHome.js");
+    console.log(userId + "inHome.js");
   }
 
 
 
   return (
     <>
-      <Navbar userId={selectedUserId}/>
+      <Navbar userId={selectedUserId} />
 
       <div className="wrapping">
         {/* navbar제외 영역 */}
@@ -37,13 +43,13 @@ const Home = () => {
           <main className="wrapper flex mx-auto">
 
             {/* 좌측 */}
-            
+
             <Left userId={selectedUserId} />
 
             {/* 가운데 */}
             <section id="center_card" className="center_card  h-screen">
               <HomeImage userId={selectedUserId} />
-              <HomeGuest userId={selectedUserId}/>
+              <HomeGuest userId={selectedUserId} />
               {/* <ChatItem /> */}
 
             </section>
@@ -51,7 +57,7 @@ const Home = () => {
             {/* 우측 */}
             <aside id="right_card" className="w-[26%]  h-full ml-4">
               <RightTop onUserSelect={handleUserSelect} />
-              <RightBottom userId={selectedUserId}/>
+              <RightBottom userId={selectedUserId} />
             </aside>
 
           </main>
