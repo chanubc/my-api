@@ -7,9 +7,6 @@ import axios from 'axios';
 import { ApiSeverUrl } from '../../../api/DefaultSetup';
 
 
-
-
-
 const RightBottom = ({ userId }) => {
 
     const [data, setData] = useState(null);
@@ -19,7 +16,7 @@ const RightBottom = ({ userId }) => {
     }, [userId])
 
     const fetchData = async () => {
-        return await axios.get(ApiSeverUrl + "/farmer/" + userId + "/sale/?format=json", {
+        return await axios.get(ApiSeverUrl + "/farmer/" + userId + "/sortinglike/?format=json", {
             headers: {
                 "Access-Control-Allow-Origin": "*",
                 "content-type": "application/json"

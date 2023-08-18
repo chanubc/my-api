@@ -9,7 +9,12 @@ import SalesProduct from '../include/SalesProduct';
 // 필요한 코드를 추가하세요
 const Sales = () => {
 
-  const [selectedUserId, setSelectedUserId] = useState(1);
+  const firstUserId = localStorage.getItem('selectUserId'); // userId를 localStorage에서 읽어옴
+
+  useEffect(() => {
+    handleUserSelect(firstUserId);
+  }, [firstUserId])
+  const [selectedUserId, setSelectedUserId] = useState(firstUserId);
 
   const handleUserSelect = (userId) => {
       setSelectedUserId(userId); // 선택된 사용자 정보를 업데이트
