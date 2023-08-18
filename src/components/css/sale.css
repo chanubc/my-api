@@ -1,36 +1,34 @@
-#main_container {
-
+#picture {
     display: flex;
     justify-content: center;
-    /*x축 가운데 정렬*/
 }
-
-#main_container .inner {
-    width: 935px;
-}
-
 
 .contents {
+    position: relative;
+
     width: 614px;
     height: 700px;
     border: 1px solid rgba(0, 0, 0, 0.09);
-    border-radius: 3px;
-    /*테두리를 둥글게 */
+
     margin-bottom: 60px;
     /*다른 contents들이 밀려야하므로 사이에 여백주기*/
-    background: white;
-
-
+    background: #D9D9D9;
 }
 
 
+
 .contents .top {
+
+    position: absolute;
+    Top: 30px;
 
 
     display: flex;
     /*justify-content: space-between;*/
     align-items: center;
-    padding: 10px 20px;
+    padding: 10px 10px;
+
+
 }
 
 
@@ -39,6 +37,7 @@
     height: 56px;
     border-radius: 50%;
     /*원형태*/
+
     overflow: hidden;
     /*자식이 크기가 넘치지 않도록 함*/
     margin-right: 8px;
@@ -72,10 +71,9 @@
 /*img_section*/
 .contents .img_section {
 
-
     overflow: hidden;
 
-    border-radius: 20px;
+    /*  border-radius: 20px; */
     /*이미지 변환을 위한 사이드 굴절 추가*/
 }
 
@@ -83,7 +81,7 @@
 
     /*  width: 820px;
     height: 519px; */
-    border-radius: 20px 20px 0px 25px;
+    border-radius: 20px 20px;
     width: 100%;
 }
 
@@ -99,7 +97,6 @@
 
     display: flex;
     /*가로배치*/
-    /*  justify-content: space-between; */
     justify-content: flex-start;
     float: left;
 
