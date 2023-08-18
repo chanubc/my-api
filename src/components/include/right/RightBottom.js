@@ -10,7 +10,7 @@ import { ApiSeverUrl } from '../../../api/DefaultSetup';
 
 
 
-const RightBottom = ({userId}) => {
+const RightBottom = ({ userId }) => {
 
     const [data, setData] = useState(null);
 
@@ -19,7 +19,7 @@ const RightBottom = ({userId}) => {
     }, [userId])
 
     const fetchData = async () => {
-        return await axios.get(ApiSeverUrl + "/farmer/"+userId+"/sale/?format=json", {
+        return await axios.get(ApiSeverUrl + "/farmer/" + userId + "/sale/?format=json", {
             headers: {
                 "Access-Control-Allow-Origin": "*",
                 "content-type": "application/json"
@@ -51,14 +51,17 @@ const RightBottom = ({userId}) => {
                                                 <img style={{ width: 317, height: 160, background: 'linear-gradient(0deg, #D9D9D9 0%, #D9D9D9 100%)', borderRadius: 5, border: '1.50px #BBBDC3 solid' }}
                                                     src={f.Post_pics} className="product_img" /></div>
                                         </div>
-                                        <div class="product_container">
-                                            <h5 className="product_title" style={{ color: 'black', fontSize: 15, fontFamily: 'Pretendard', fontWeight: '600', wordWrap: 'break-word', position: 'relative', top: '5px' }}>
+                                        <div class="product_container" >
+                                            <div className="product_title" style={{
+                                                color: 'black', fontSize: 14, fontFamily: 'Pretendard', fontWeight: '600', position: 'relative', top: '5px'
+                                                , whiteSpace: 'nowrap', overflow: 'hidden', letterSpacing: '-0.5px'
+                                            }}>
                                                 {f.title}
-                                            </h5>
+                                            </div>
                                             <div class="purchase_RB" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', position: 'relative', top: '5px' }}>
                                                 <div class="likes_m_text">
                                                     <img src={ImgHeart} alt="하트 아이콘"></img>
-                                                    <span class="count">현재 {f.like}명이 구매 중입니다.</span>
+                                                    <span class="count">현재 {f.like}명이 구매중입니다.</span>
                                                 </div>
 
                                                 <span style={{ color: '#FF4D00', fontSize: 15, fontFamily: 'Pretendard', fontWeight: '600', wordWrap: 'break-word' }} className="product_mon">{f.price}원</span>
