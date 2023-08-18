@@ -7,7 +7,7 @@ import Img01 from '../include/img/img01.jpg'; */
 import axios from 'axios';
 import { ApiSeverUrl } from '../../api/DefaultSetup';
 
-const SalesProduct = ({userId}) => {
+const SalesProduct = ({ userId }) => {
 
     const [data, setData] = useState(null);
 
@@ -16,7 +16,7 @@ const SalesProduct = ({userId}) => {
     }, [userId])
 
     const fetchData = async () => {
-        return await axios.get(ApiSeverUrl + "/farmer/"+userId+"/sale/?format=json", {
+        return await axios.get(ApiSeverUrl + "/farmer/" + userId + "/sale/?format=json", {
             headers: {
                 "Access-Control-Allow-Origin": "*",
                 "content-type": "application/json"
@@ -93,12 +93,12 @@ const SalesProduct = ({userId}) => {
                                                                 구매하기</button>
 
                                                             <div class="likes_m_text">
-                                                                <div class="likes_m_container" >
-                                                                    <img src={ImgHeart} alt="하트아이콘" ></img>
-                                                                    <span class="count" >현재 {f.like}명이 구매중입니다.</span>
+
+                                                                <img src={ImgHeart} alt="하트아이콘" ></img>
+                                                                <span class="count" >현재 {f.like}명이 구매중입니다.</span>
 
 
-                                                                </div>
+
                                                             </div>
 
 
