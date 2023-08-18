@@ -4,7 +4,8 @@ import Logo from '../../img/Logo_farmerin.svg'; // 이미지 경로 설정
 import NavText from './NavText'; // 이미지 경로 설정
 
 
-const Navbar = () => {
+const Navbar = ({userId}) => {
+    console.log(userId+"inNavbar")
     return (
         <nav className="bg-[#FBFBFB] border-gray-200 shadow-lg overflow-hidden navbar">
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-4 w-[80%]">
@@ -60,7 +61,8 @@ const Navbar = () => {
                             placeholder="Search..."></input>
                     </div>
 
-                    <NavText />
+                    <NavText userId={userId}/>
+                   
 
                 </div>
             </div>

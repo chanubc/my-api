@@ -18,7 +18,7 @@ const GuestBook = ({ userId }) => {
     const handleSubmit = async (userId) => {
         try {
             PostData()
-            setButtonClick(ButtonClick+userId)
+            setButtonClick(ButtonClick+1)
             setTextareaValue("")
 
         } catch (error) {

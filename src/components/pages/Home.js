@@ -15,13 +15,14 @@ const Home = () => {
 
   const handleUserSelect = (userId) => {
     setSelectedUserId(userId); // 선택된 사용자 정보를 업데이트
+    console.log(userId+"inHome.js");
   }
 
 
 
   return (
     <>
-      <Navbar />
+      <Navbar userId={selectedUserId}/>
 
       <div className="wrapping">
         {/* navbar제외 영역 */}
