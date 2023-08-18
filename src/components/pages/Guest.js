@@ -7,14 +7,27 @@ import RightTop from '../include/right/RightTop';
 import RightBottom from '../include/right/RightBottom';
 import GuestBook from '../include/guest/GuestBook';
 import AxiosTest from '../include/guest/InputButton';
+import browserStorage from '../../utils/BrowserStorage';
 
 const Guest = () => {
 
-  const [selectedUserId, setSelectedUserId] = useState(1);
-
+  
+  const firstUserId = localStorage.getItem('selectUserId'); // userId를 localStorage에서 읽어옴
+  
+  console.log(firstUserId + " selectedUserId in guest");
+  
+  useEffect(() => {
+    handleUserSelect(firstUserId);
+  }, [firstUserId])
+  
+  const [selectedUserId, setSelectedUserId] = useState(firstUserId);
+  
   const handleUserSelect = (userId) => {
       setSelectedUserId(userId); // 선택된 사용자 정보를 업데이트
   }
+
+
+  
 
 
   return (
@@ -37,7 +50,7 @@ const Guest = () => {
 
             {/* 우측 */}
             <aside id="right_card" className="w-[26%]  h-full ml-4">
-              <RightTop onUserSelect={handleUserSelect}/>
+              <RightTop onUserSelect={handleUserSelect} userId={selectedUserId}/>
               <RightBottom userId={selectedUserId} />
             </aside>
 
