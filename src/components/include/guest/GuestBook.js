@@ -8,7 +8,7 @@ import { ApiSeverUrl } from '../../../api/DefaultSetup';
 import IconButton from '../../img/Button_write.svg'
 
 
-const GuestBook = ({ userId }) => {
+const GuestBook = ( {userId} ) => {
 
     const [inputTest, setTextareaValue] = useState(""); // 제목 값을 저장하는 상태 변수
     const [ButtonClick, setButtonClick] = useState(1); // 제목 값을 저장하는 상태 변수
@@ -17,8 +17,8 @@ const GuestBook = ({ userId }) => {
 
     const handleSubmit = async (userId) => {
         try {
-            PostData()
-            setButtonClick(ButtonClick+1)
+            console.log(ButtonClick + "in guestbook")
+            await PostData()
             setTextareaValue("")
 
         } catch (error) {
@@ -61,6 +61,8 @@ const GuestBook = ({ userId }) => {
         axios.request(config)
             .then((response) => {
                 console.log(JSON.stringify(response.data));
+                setButtonClick(ButtonClick+1)
+
             })
             .catch((error) => {
                 console.log(error);
