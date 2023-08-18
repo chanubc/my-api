@@ -27,7 +27,7 @@
 } */
 
 .image-container {
-  width: 100%; /* 이미지 컨테이너의 가로 너비 */
+  width: 100%; /* 이미지 컨테이너의 가로 너비 */;
   overflow: hidden; /* 넘치는 부분을 숨기기 위해 overflow 속성 사용 */
 }
 
@@ -36,6 +36,8 @@
   object-fit: cover; /* 이미지를 컨테이너에 맞게 조절하면서 가장 큰 크기로 표시 */
   object-position: center;
   overflow: hidden;
+  justify-content: center;
+  align-items: center;
   /* 이미지를 가운데로 정렬 */
 }
 

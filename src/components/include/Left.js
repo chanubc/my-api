@@ -20,7 +20,7 @@ const Left = ({ userId }) => {
 
     useEffect(() => {
 
-        
+
 
         if (userId === null) {
             userId = 1
@@ -33,15 +33,12 @@ const Left = ({ userId }) => {
     }, [userId]); // userId가 변경될 때마다 fetchData 실행
 
     // useEffect(() => {
-  //   const delay = setTimeout(() => {
-  //     fetchData();
-  //   }, 3000);
+    //   const delay = setTimeout(() => {
+    //     fetchData();
+    //   }, 3000);
 
-  //   return () => clearTimeout(delay);
-  // }, [])
-
-
-
+    //   return () => clearTimeout(delay);
+    // }, [])
 
 
     const fetchData = async () => {
@@ -64,40 +61,9 @@ const Left = ({ userId }) => {
         });
     }
 
-
-    /*
-    {
-        "Farmer_pic": "/https%3A/drive.google.com/uc%3Fid%3D19dqkjHUzipwmrPNezLhNc535AtmVnq2U",
-        "Farmer_back_pic": "/https%3A/drive.google.com/uc%3Fid%3D1_Xf3vmANSTDm5pcq709BYyyom1hegLUv",
-        "Farmer_name": "NohSeonJae",
-        "Farmer_tel": "01012345678",
-        "Farmer_intro": "반갑습니다",
-        "Farm": {
-            "master": 1,
-            "Farm_pic": [
-                {
-                    "Farm_pics": "/https%3A/drive.google.com/uc%3Fid%3D1IxQy7BEMB_J-VHXgHMogkvIokD4O1iWe"
-                },
-                {
-                    "Farm_pics": "/https%3A/drive.google.com/uc%3Fid%3D1g0ZTlEgZm7P5XXfeBYfWS9D4YgolCBBr"
-                },
-                {
-                    "Farm_pics": "/https%3A/drive.google.com/uc%3Fid%3D1qfd6nzcCp566NKtkt9Cs4vvPIhEmCMIr"
-                },
-                {
-                    "Farm_pics": "/https%3A/drive.google.com/uc%3Fid%3D1lON2uZOjynjclfLXlRi56Hz_GtyPpZiR"
-                },
-                {
-                    "Farm_pics": "/https%3A/drive.google.com/uc%3Fid%3D1qkV9T_O99gyA-YowdO2Rs78bVVpzw6eg"
-                }
-            ]
-        }
-    }
-    */
-
     return (
         <>
-            <aside id="left_card" className="w-[22%] h-screen mr-4">
+            <aside id="left_card" className="w-[22%] min-w-[15.4rem] h-screen mr-4">
                 {/* <!-- 내부카드 --> */}
                 <section className="w-full rounded-[20px] h-[85%] overflow-hidden shadow-lg bg-[#FAFAFA]">
 
@@ -109,7 +75,7 @@ const Left = ({ userId }) => {
                                     <img className="image w-full h-full" src={data.Farmer_back_pic} alt="Sunset in the mountains" />
                                 </div>
                                 <div id="custom-ha" className='w-fit h-fit inline-block'>
-                                    <img className="image bg-white custom-ha w-[7.5rem] h-[7.5rem] rounded-[50%] ring-4 ring-gray-50" src={data.Farmer_pic} alt="Bordered avatar" />
+                                    <img className="image bg-white custom-ha w-[7.5rem] h-[7.5rem] max-h-max-[7.5rem] rounded-[50%] ring-4 ring-gray-50 overflow-hidden" src={data.Farmer_pic} alt="Bordered avatar" />
                                 </div>
                             </section>
 
@@ -129,15 +95,15 @@ const Left = ({ userId }) => {
                             </article>
 
                             {/* 하단 부 글 */}
-                            <article className="px-6 py-2">
+                            <article className="px-6 py-2 ">
                                 <div className='flex items-center justify-center mb-3'>
                                     <p className="font-bold text-lg text-[#00A884]">한줄소개</p>
                                     <img className='ml-auto rounded transition duration-150 ease-in-out hover:bg-[#D3DEDA] focus:outline-none focus:ring-0 active:text-primary-700'
                                         src={LogoWrite} alt='logo' />
                                 </div>
-                                <p className="text-[#666666] text-base font-medium overflow-hidden text-ellipsis ">
-                                    {data.Farmer_intro}
-                                </p>
+                                <div className="text-[#666666] text-base font-medium overflow-hidden">
+                                    <p className="text-ellipsis">{data.Farmer_intro}</p>
+                                </div>
                                 {/* <p className="text-[#666666] text-base font-medium mt-3">
                                     반갑습니다 저는 고령에서 벼와 콩을 재배하고 있습니다.</p> */}
                             </article>

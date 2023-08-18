@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import ChatItem from './guest/ChatItem';
 
 
-const HomeGuest = () => {
+const HomeGuest = ({userId}) => {
     return (
         // <!-- 방명록 -->
         <section id="guest_book"
@@ -13,7 +13,7 @@ const HomeGuest = () => {
                 <div className="font-bold text-xl mb-2">방명록</div>
             </div>
             <div className="pl-6 py-4 overflow-y-auto h-[65%]">
-                <ChatItem />
+                <ChatItem userId={userId} />
             </div>
         </section>
     )
