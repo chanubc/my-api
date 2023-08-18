@@ -10,10 +10,11 @@ import { ApiSeverUrl } from '../../api/DefaultSetup';
 const SalesProduct = ({ userId }) => {
 
     const [data, setData] = useState(null);
+    const [buttonClick, setButtonClick] = useState(0);
 
     useEffect(() => {
         fetchData();
-    }, [userId])
+    }, [userId, buttonClick])
 
     const fetchData = async () => {
         return await axios.get(ApiSeverUrl + "/farmer/" + userId + "/sale/?format=json", {
@@ -29,6 +30,40 @@ const SalesProduct = ({ userId }) => {
             console.log(error);
         });
     }
+
+    const PostData = async (productId) => {
+        console.log(productId);
+        let data = JSON.stringify({
+            "author": "",
+            "content": "",
+            "create_date": "2022-01-01T12:00:00"
+        });
+
+        let config = {
+            method: 'post',
+            maxBodyLength: Infinity,
+            url: `${ApiSeverUrl}/farmer/${userId}/sale/${productId}/like/`,
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            data: data
+        };
+
+        axios.request(config)
+            .then((response) => {
+                console.log(JSON.stringify(response.data));
+                setButtonClick(buttonClick + 1);
+                fetchData();
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+
+    }
+    
+
+
+
 
     return (
 
@@ -89,9 +124,8 @@ const SalesProduct = ({ userId }) => {
                                                         </div>
 
                                                         <div class="purchase">
-                                                            <button className="my-button">
+                                                            <button className="my-button" onClick={() => PostData(f.id)}>
                                                                 구매하기</button>
-
                                                             <div class="likes_m_text">
 
                                                                 <img src={ImgHeart} alt="하트아이콘" ></img>

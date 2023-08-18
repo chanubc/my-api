@@ -10,6 +10,7 @@ const App = () => {
     <Router>
       <Routes>
         <Route exact path="/" element={<Home />} />
+        {/* <Route path="/sales/:key" element={<Sales/>} /> */}
         <Route path="/sales" element={<Sales/>} />
         <Route path="/guest" element={<Guest/>} />
       </Routes>
