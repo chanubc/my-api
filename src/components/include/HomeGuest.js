@@ -9,15 +9,6 @@ const HomeGuest = ({ userId }) => {
 
     const [data, setData] = useState([]);
 
-
-    // useEffect(() => {
-    //     const delay = setTimeout(() => {
-    //         fetchData();
-    //     });
-
-    //     return () => clearTimeout(delay);
-    // }, [])
-
     useEffect(() => {
 
         fetchData(userId);
@@ -28,7 +19,7 @@ const HomeGuest = ({ userId }) => {
     const fetchData = async (userId) => {
 
         // return await axios.get(ApiSeverUrl + "/farmer/${setindex+1}/farm/?format=json", {
-        return axios.get(`${ApiSeverUrl}/farmer/${userId}/guestbook/?format=json`, {
+        return axios.get(`${ApiSeverUrl}/farmer/${userId}/sortingguestbook/?format=json`, {
             headers: {
                 "Access-Control-Allow-Origin": "*",
                 "content-type": "application/json",
@@ -42,15 +33,6 @@ const HomeGuest = ({ userId }) => {
         }).catch((error) => {
             console.log(error);
         });
-    }
-
-    const DeleteData = async (itemId) => {
-
-        const result = await axios.delete(`${ApiSeverUrl}/farmer/${userId}/guestbook/${itemId}/`);
-        if (result.status === 204) {
-            fetchData(userId)
-        }
-
     }
 
 
@@ -73,8 +55,12 @@ const HomeGuest = ({ userId }) => {
                                 {/* <!-- 채팅 item --> */}
                                 <main className='mb-4' key={item.id}>
                                     {/* 내부요소 수직 좌측 정렬 flex item-center /justify-between 는 없음. */}
-                                    <section className='rounded-xl shadow-md bg-[#00A884] z-50 py-4 min-h-[3.5rem] h-16 px-3 flex items-center w-full justify-between'>
-                                        <p className='text-gray-50 block w-full ml-2 text-base font-semibold overflow-x-hidden overflow-y-auto flex-grow'>
+                                    <section className='rounded-xl shadow-md bg-[#00A884] z-50 py-4 min-h-[3.5rem] h-16 px-3 flex items-center'>
+
+                                        <p className='text-gray-50   text-base font-semibold '>
+                                            {item.create_date}
+                                        </p>
+                                        <p className='text-gray-50 ml-3 text-base font-semibold  '>
                                             {item.content}
                                         </p>
 
