@@ -1,3 +1,6 @@
+# 프로젝트 소개
+이웃 농장들을 소개합니다! farmer-in
+
 # Netilfy   
 [![Netlify Status](https://api.netlify.com/api/v1/badges/586e300d-795b-4045-bc70-e85c6c7d99a8/deploy-status)](https://app.netlify.com/sites/farmer-in-nongtori/deploys)
 # Adress   
