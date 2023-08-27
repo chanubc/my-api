@@ -23,6 +23,7 @@ const Home = () => {
     }
 
   }, [firstUserId])
+  
   const [selectedUserId, setSelectedUserId] = useState(firstUserId);
 
   const handleUserSelect = (userId) => {

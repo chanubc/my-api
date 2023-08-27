@@ -11,23 +11,33 @@ import browserStorage from '../../utils/BrowserStorage';
 
 const Guest = () => {
 
-  
+
+  // browserStorage.set('selectUserId', 1); // userId를 localStorage에 저장
   const firstUserId = localStorage.getItem('selectUserId'); // userId를 localStorage에서 읽어옴
-  
+
   console.log(firstUserId + " selectedUserId in guest");
-  
+
+
   useEffect(() => {
-    handleUserSelect(firstUserId);
+    if (firstUserId) {
+      handleUserSelect(firstUserId);
+    }
+    else {
+      handleUserSelect(1);
+    }
+
   }, [firstUserId])
-  
+
+
+
   const [selectedUserId, setSelectedUserId] = useState(firstUserId);
-  
+
   const handleUserSelect = (userId) => {
-      setSelectedUserId(userId); // 선택된 사용자 정보를 업데이트
+    setSelectedUserId(userId); // 선택된 사용자 정보를 업데이트
   }
 
 
-  
+
 
 
   return (
@@ -40,7 +50,7 @@ const Guest = () => {
           <main className="wrapper flex mx-auto">
 
             {/* 좌측 */}
-            <Left userId={selectedUserId}/>
+            <Left userId={selectedUserId} />
 
             {/* 가운데 */}
             <section id="center_card" className="center_card  h-screen">
@@ -50,7 +60,7 @@ const Guest = () => {
 
             {/* 우측 */}
             <aside id="right_card" className="w-[26%]  h-full ml-4">
-              <RightTop onUserSelect={handleUserSelect} userId={selectedUserId}/>
+              <RightTop onUserSelect={handleUserSelect} userId={selectedUserId} />
               <RightBottom userId={selectedUserId} />
             </aside>
 
