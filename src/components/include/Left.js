@@ -21,7 +21,6 @@ const Left = ({ userId }) => {
     useEffect(() => {
 
 
-
         if (userId === null) {
             userId = 1
         }
@@ -32,13 +31,7 @@ const Left = ({ userId }) => {
         console.log(userId + " in left")
     }, [userId]); // userId가 변경될 때마다 fetchData 실행
 
-    // useEffect(() => {
-    //   const delay = setTimeout(() => {
-    //     fetchData();
-    //   }, 3000);
 
-    //   return () => clearTimeout(delay);
-    // }, [])
 
 
     const fetchData = async () => {

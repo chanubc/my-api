@@ -10,10 +10,11 @@ import { ApiSeverUrl } from '../../api/DefaultSetup';
 const SalesProduct = ({ userId }) => {
 
     const [data, setData] = useState(null);
+    const [buttonClick, setButtonClick] = useState(0);
 
     useEffect(() => {
         fetchData();
-    }, [userId])
+    }, [userId, buttonClick])
 
     const fetchData = async () => {
         return await axios.get(ApiSeverUrl + "/farmer/" + userId + "/sale/?format=json", {
@@ -29,6 +30,40 @@ const SalesProduct = ({ userId }) => {
             console.log(error);
         });
     }
+
+    const PostData = async (productId) => {
+        console.log(productId);
+        let data = JSON.stringify({
+            "author": "",
+            "content": "",
+            "create_date": "2022-01-01T12:00:00"
+        });
+
+        let config = {
+            method: 'post',
+            maxBodyLength: Infinity,
+            url: `${ApiSeverUrl}/farmer/${userId}/sale/${productId}/like/`,
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            data: data
+        };
+
+        axios.request(config)
+            .then((response) => {
+                console.log(JSON.stringify(response.data));
+                setButtonClick(buttonClick + 1);
+                fetchData();
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+
+    }
+
+
+
+
 
     return (
 
@@ -56,68 +91,61 @@ const SalesProduct = ({ userId }) => {
 
                                                         <img src={f.Post_pics} className='w-full h-[300.88px] bg-[lightgray 0px -596.153px / 105.366% 246.463% no-repeat, #D9D9D9] ' alt={"프로필이미지"} />
                                                     </div>
-                                                </div>
-                                            </div>
-
-
-                                            <div class="top">
-                                                <div class="profile_img">
-                                                    <img src={f.author_pic} className='w-full h-full [bg-gray-500]' alt={"프로필이미지"} />
 
                                                 </div>
 
-                                                <div class="user_name">
-                                                    <div class="nick_name m_text">{f.author}</div>
-                                                    <div class="timer">10분전 </div>
-
+                                                <div class="bottom_icons">
                                                 </div>
-                                            </div>
 
+                                                <div class="top">
+                                                    <div class="profile_img">
+                                                        <img src={f.author_pic} className='w-full h-full [bg-gray-500]' alt={"프로필이미지"} />
 
-
-
-
-
-                                            <div class="bottom_icons">
-                                            </div>
-
-
-                                            <div class="comment_container">
-                                                <div class="comment">
-                                                    <div>
-                                                        {f.content}
                                                     </div>
 
+                                                    <div class="user_name">
+                                                        <div class="nick_name m_text">{f.author}</div>
+                                                        <div class="timer">10분전 </div>
 
+                                                    </div>
                                                 </div>
 
-                                                <div class="purchase">
-                                                    <button className="my-button" onClick={() => PostData(f.id)}>
-                                                        구매하기</button>
-                                                    <div class="likes_m_text">
 
-                                                        <img src={ImgHeart} alt="하트아이콘" ></img>
-                                                        <span class="count" >현재 {f.like}명이 구매중입니다.</span>
-
+                                                <div class="comment_container">
+                                                    <div class="comment">
+                                                        <div>
+                                                            {f.content}
+                                                        </div>
 
 
                                                     </div>
 
+                                                    <div class="purchase">
+                                                        <button className="my-button" onClick={() => PostData(f.id)}>
+                                                            구매하기</button>
+                                                        <div class="likes_m_text">
+
+                                                            <img src={ImgHeart} alt="하트아이콘" ></img>
+                                                            <span class="count" >현재 {f.like}명이 구매중입니다.</span>
+
+
+
+                                                        </div>
+                                                    </div>
 
                                                 </div>
                                             </div>
-
 
 
                                         </article>
                                     </div>
-                                </div>
-                            </section>
 
-                            {/*  </div>
-                            </section> */}
+                                </div>
+
+                            </section >
                         </>
-                    ))}
+                    ))
+                    }
                 </>
             ) : (
                 <>
