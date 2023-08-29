@@ -60,7 +60,7 @@ const SalesProduct = ({ userId }) => {
             });
 
     }
-    
+
 
 
 
@@ -78,78 +78,74 @@ const SalesProduct = ({ userId }) => {
                             <section key={f.author} id="picture"
                                 className="picture w-full rounded-[20px] overflow-hidden shadow-lg bg-[#FBFBFB] mb-6">
                                 {/* <!-- picture 영역 padding 적용 --> */}
-                                < div className="px-6 py-5">
-                                    <section id="main_container">
-                                        <div class="inner">
-                                            <div class="contents_box">
-                                                <article class="contents">
-                                                    <header class="top">
-                                                        <div class="profile_img">
-                                                            <img src={f.author_pic} className='w-full h-full [bg-gray-500]' alt={"프로필이미지"} />
+                                {/*  < div className="px-6 py-5">
+                                    <section id="main_container"> */}
+                                <div class="inner">
+                                    <div class="contents_box">
+                                        <article class="contents">
 
-                                                        </div>
+                                            <div class="img_section">
+                                                <div class="trans_inner">
+                                                    <div>
+                                                        {/* <img src={Img01} alt="img01"></img> */}
 
-                                                        <div class="user_name">
-                                                            <div class="nick_name m_text">{f.author}</div>
-                                                            <div class="timer">10분전 </div>
-
-                                                        </div>
-                                                    </header>
-
-
-                                                    <div class="img_section">
-                                                        <div class="trans_inner">
-                                                            <div>
-                                                                {/* <img src={Img01} alt="img01"></img> */}
-
-                                                                <img src={f.Post_pics} className='w-full h-[300.88px] bg-[lightgray 0px -596.153px / 105.366% 246.463% no-repeat, #D9D9D9] ' alt={"프로필이미지"} />
-                                                            </div>
-                                                        </div>
+                                                        <img src={f.Post_pics} className='w-full h-[300.88px] bg-[lightgray 0px -596.153px / 105.366% 246.463% no-repeat, #D9D9D9] ' alt={"프로필이미지"} />
                                                     </div>
 
+                                                </div>
 
+                                                <div class="bottom_icons">
+                                                </div>
 
+                                                <div class="top">
+                                                    <div class="profile_img">
+                                                        <img src={f.author_pic} className='w-full h-full [bg-gray-500]' alt={"프로필이미지"} />
 
-                                                    <div class="bottom_icons">
                                                     </div>
 
+                                                    <div class="user_name">
+                                                        <div class="nick_name m_text">{f.author}</div>
+                                                        <div class="timer">10분전 </div>
 
-                                                    <div class="comment_container">
-                                                        <div class="comment">
-                                                            <div>
-                                                                {f.content}
-                                                            </div>
+                                                    </div>
+                                                </div>
 
 
+                                                <div class="comment_container">
+                                                    <div class="comment">
+                                                        <div>
+                                                            {f.content}
                                                         </div>
 
-                                                        <div class="purchase">
-                                                            <button className="my-button" onClick={() => PostData(f.id)}>
-                                                                구매하기</button>
-                                                            <div class="likes_m_text">
 
-                                                                <img src={ImgHeart} alt="하트아이콘" ></img>
-                                                                <span class="count" >현재 {f.like}명이 구매중입니다.</span>
+                                                    </div>
 
+                                                    <div class="purchase">
+                                                        <button className="my-button" onClick={() => PostData(f.id)}>
+                                                            구매하기</button>
+                                                        <div class="likes_m_text">
 
+                                                            <img src={ImgHeart} alt="하트아이콘" ></img>
+                                                            <span class="count" >현재 {f.like}명이 구매중입니다.</span>
 
-                                                            </div>
 
 
                                                         </div>
                                                     </div>
 
-
-
-                                                </article>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </section>
+
+
+                                        </article>
+                                    </div>
 
                                 </div>
-                            </section>
+
+                            </section >
                         </>
-                    ))}
+                    ))
+                    }
                 </>
             ) : (
                 <>
